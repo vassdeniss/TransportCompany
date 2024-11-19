@@ -1,5 +1,6 @@
 package org.f108349.denis.configuration;
 
+import org.f108349.denis.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -13,6 +14,13 @@ public class SessionFactoryUtil {
         if (sessionFactory == null) {
             Configuration config = new Configuration();
             try {
+                config.addAnnotatedClass(   Company.class)
+                    .addAnnotatedClass(Customer.class)
+                    .addAnnotatedClass(EmployeeClassification.class)
+                    .addAnnotatedClass(Employee.class)
+                    .addAnnotatedClass(VehicleType.class)
+                    .addAnnotatedClass(Vehicle.class)
+                    .addAnnotatedClass(Order.class);
                 registry = new StandardServiceRegistryBuilder()
                     .applySettings(config.getProperties()).build();
                 sessionFactory = config.buildSessionFactory(registry);
