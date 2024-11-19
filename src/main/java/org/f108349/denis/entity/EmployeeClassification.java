@@ -12,7 +12,7 @@ import java.util.UUID;
 public class EmployeeClassification {
     @Id
     @Column(columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
     
     @Column(name = "classification_name", nullable = false, unique = true)
     private String classificationName;

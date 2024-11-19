@@ -12,7 +12,7 @@ import java.util.UUID;
 public class Order {
     @Id
     @Column(columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
     
     @Column(name = "order_date", nullable = false)
     private LocalDateTime orderDate;

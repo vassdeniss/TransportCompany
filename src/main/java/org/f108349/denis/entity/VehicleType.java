@@ -12,7 +12,7 @@ import java.util.UUID;
 public class VehicleType {
     @Id
     @Column(columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
 
     @Column(name = "type_name", nullable = false, unique = true)
     private String typeName;

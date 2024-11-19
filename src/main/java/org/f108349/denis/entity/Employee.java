@@ -9,7 +9,7 @@ import java.util.UUID;
 public class Employee {
     @Id
     @Column(columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;

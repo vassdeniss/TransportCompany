@@ -9,7 +9,7 @@ import java.util.UUID;
 public class Vehicle {
     @Id
     @Column(columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
     
     @Column(nullable = false)
     private String model;

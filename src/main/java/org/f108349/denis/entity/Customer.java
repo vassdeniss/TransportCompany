@@ -10,9 +10,21 @@ import java.util.UUID;
 @Entity
 @Table(name = "customer")
 public class Customer {
+    public Customer() {}
+    
+    public Customer(String firstName, String lastName, String email, String phone, String address) {
+        this.id = UUID.randomUUID().toString();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.isDeleted = false;
+    }
+
     @Id
     @Column(columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;

@@ -13,7 +13,7 @@ import java.util.UUID;
 public class Company {
     @Id
     @Column(columnDefinition = "CHAR(36)")
-    private UUID id;
+    private String id;
 
     @Column(nullable = false)
     private String name;
