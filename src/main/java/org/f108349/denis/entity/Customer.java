@@ -43,4 +43,18 @@ public class Customer {
 
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
+    
+    @Override
+public String toString() {
+    return "Customer {" + 
+           "\n    id='" + id + '\'' + 
+           ",\n    firstName='" + firstName + '\'' + 
+           ",\n    lastName='" + lastName + '\'' + 
+           ",\n    email='" + email + '\'' + 
+           ",\n    phone='" + phone + '\'' + 
+           ",\n    address='" + address + '\'' + 
+           ",\n    isDeleted=" + isDeleted + 
+           "\n}";
+}
+
 }
