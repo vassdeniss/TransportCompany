@@ -38,4 +38,12 @@ public class CustomerDao {
         }
         return customers;
     }
+    
+    public static void updateCustomer(Customer customer) {
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction tx = session.beginTransaction();
+            session.merge(customer);
+            tx.commit();
+        }
+    }
 }

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="feat: get customer data from console">
+    <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="feat: added get all method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" afterDir="false" />
@@ -90,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1731941822311</updated>
-      <workItem from="1731941824270" duration="22606000" />
+      <workItem from="1731941824270" duration="24743000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />
@@ -124,7 +124,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732060601537</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat: added get all method">
+      <option name="closed" value="true" />
+      <created>1732135350530</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732135350530</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +143,7 @@
     <MESSAGE value="feat: added entities" />
     <MESSAGE value="feat: added customer dao save" />
     <MESSAGE value="feat: get customer data from console" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: get customer data from console" />
+    <MESSAGE value="feat: added get all method" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added get all method" />
   </component>
 </project>

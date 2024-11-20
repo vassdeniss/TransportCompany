@@ -22,7 +22,8 @@ public class Main {
                 System.out.println("1. Save Customer");
                 System.out.println("2. Get Customer");
                 System.out.println("3. Get All Customers");
-                System.out.println("4. Exit");
+                System.out.println("4. Update Customer");
+                System.out.println("5. Exit");
                 System.out.print("Your choice: ");
                 
                 String choice = scanner.nextLine();
@@ -37,6 +38,9 @@ public class Main {
                         getAllCustomers();
                         break;
                     case "4":
+                        updateCustomer(scanner);
+                        break;
+                    case "5":
                         isRunning = false;
                         System.out.println("Exiting application...");
                         break;
@@ -86,10 +90,68 @@ public class Main {
     
     private static void getAllCustomers() {
         System.out.println("\n--- Get All Customers ---");
+        CustomerDao.getAllCustomers().forEach(System.out::println);
+    }
+    
+    private static void updateCustomer(Scanner scanner) {
+        System.out.println("\n--- Update Customer ---");
+        System.out.print("Enter customer ID: ");
+        String customerId = scanner.nextLine();
 
-        List<Customer> customers = CustomerDao.getAllCustomers();
-        for (Customer customer : customers) {
-            System.out.println(customer);
+        Customer customer = CustomerDao.getCustomerById(customerId);
+        if (customer == null) {
+            System.out.println("Customer not found with ID: " + customerId);
+            return;
         }
+
+        System.out.println("Customer found: " + customer);
+        System.out.println("Which field do you want to update?");
+        System.out.println("1. First Name");
+        System.out.println("2. Last Name");
+        System.out.println("3. Email");
+        System.out.println("4. Phone");
+        System.out.println("5. Address");
+        System.out.print("Your choice: ");
+        String fieldChoice = scanner.nextLine();
+
+        String newValue;
+        switch (fieldChoice) {
+            case "1":
+                System.out.println("Current First Name: " + customer.getFirstName());
+                System.out.print("Enter new First Name: ");
+                newValue = scanner.nextLine();
+                customer.setFirstName(newValue);
+                break;
+            case "2":
+                System.out.println("Current Last Name: " + customer.getLastName());
+                System.out.print("Enter new Last Name: ");
+                newValue = scanner.nextLine();
+                customer.setLastName(newValue);
+                break;
+            case "3":
+                System.out.println("Current Email: " + customer.getEmail());
+                System.out.print("Enter new Email: ");
+                newValue = scanner.nextLine();
+                customer.setEmail(newValue);
+                break;
+            case "4":
+                System.out.println("Current Phone: " + customer.getPhone());
+                System.out.print("Enter new Phone: ");
+                newValue = scanner.nextLine();
+                customer.setPhone(newValue);
+                break;
+            case "5":
+                System.out.println("Current Address: " + customer.getAddress());
+                System.out.print("Enter new Address: ");
+                newValue = scanner.nextLine();
+                customer.setAddress(newValue);
+                break;
+            default:
+                System.out.println("Invalid choice. No updates made.");
+                return;
+        }
+
+        CustomerDao.updateCustomer(customer);
+        System.out.println("Customer updated successfully.");
     }
 }
