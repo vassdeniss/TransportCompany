@@ -1,15 +1,18 @@
 package org.f108349.denis.dao;
 
 import org.f108349.denis.configuration.SessionFactoryUtil;
+import org.f108349.denis.dto.CustomerDto;
 import org.f108349.denis.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
+ 
 public class CustomerDao {
-    public static void saveCustomer(Customer customer) {
+    public static void saveCustomer(CustomerDto customerDto) {
+        Customer customer = new Customer(customerDto.getFirstName(), customerDto.getLastName(), 
+                customerDto.getEmail(), customerDto.getPhone(), customerDto.getAddress());
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             session.persist(customer);
@@ -17,31 +20,58 @@ public class CustomerDao {
         }
     }
     
-    public static Customer getCustomerById(String id) {
+    public static CustomerDto getCustomerById(String id) {
         Customer customer;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             customer = session.get(Customer.class, id);
             tx.commit();
         }
-        return customer;
+        
+        if (customer == null || (customer != null && customer.isDeleted())) {
+            return null;
+        }
+        
+        return new CustomerDto(customer);
     }
     
-    public static List<Customer> getAllCustomers() {
+    public static List<CustomerDto> getAllCustomers() {
         List<Customer> customers;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             customers = session
-                    .createQuery("select c from Customer c", Customer.class)
+                    .createQuery("select c from Customer c where c.isDeleted = false", Customer.class)
                     .getResultList();
             tx.commit();
         }
-        return customers;
+        
+        List<CustomerDto> customerDtos = new ArrayList<>();
+        customers.forEach(customer -> customerDtos.add(new CustomerDto(customer)));
+        
+        return customerDtos;
     }
     
-    public static void updateCustomer(Customer customer) {
+    public static void updateCustomer(CustomerDto customerDto) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
+            Customer customer = session.get(Customer.class, customerDto.getId());
+            
+            customer.setFirstName(customerDto.getFirstName());
+            customer.setLastName(customerDto.getLastName());
+            customer.setEmail(customerDto.getEmail());
+            customer.setPhone(customerDto.getPhone());
+            customer.setAddress(customerDto.getAddress());
+            
+            session.merge(customer);
+            tx.commit();
+        }
+    }
+    
+    public static void deleteCustomer(String id) {
+        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction tx = session.beginTransaction();
+            Customer customer = session.get(Customer.class, id);
+            customer.setDeleted(true);
             session.merge(customer);
             tx.commit();
         }
