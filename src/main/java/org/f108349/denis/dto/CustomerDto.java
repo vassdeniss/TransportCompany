@@ -73,11 +73,11 @@ public class CustomerDto {
 
     @Override
     public String toString() {
-        return "Information about " + firstName + " " + lastName + ":" + 
-               "\n    First Name is '" + firstName + '\'' + 
-               "\n    Last Name is '" + lastName + '\'' + 
-               "\n    Email is '" + email + '\'' + 
-               "\n    Phone Number is '" + phone + '\'' + 
-               "\n    Address is '" + address + '\'';
+        return "Information about " + this.firstName + " " + this.lastName + ":" + 
+               "\n    First Name is '" + this.firstName + '\'' + 
+               "\n    Last Name is '" + this.lastName + '\'' + 
+               "\n    Email is '" + this.email + '\'' + 
+               "\n    Phone Number is '" + this.phone + '\'' + 
+               "\n    Address is '" + this.address + '\'';
     }
 }

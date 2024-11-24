@@ -6,7 +6,41 @@ import org.f108349.denis.dto.CustomerDto;
 import java.util.Scanner;
 
 public class CustomerCc {
-    public static void saveCustomer(Scanner scanner) {
+    public static void run(Scanner scanner) {
+        System.out.println("\nPlease select an option:");
+        System.out.println("1. Save Customer");
+        System.out.println("2. Get Customer");
+        System.out.println("3. Get All Customers");
+        System.out.println("4. Update Customer");
+        System.out.println("5. Delete Customer");
+        System.out.println("6. Exit");
+        System.out.print("Your choice: ");
+        
+        String choice = scanner.nextLine();
+        switch (choice) {
+            case "1":
+                CustomerCc.saveCustomer(scanner);
+                break;
+            case "2":
+                CustomerCc.getCustomer(scanner);
+                break;
+            case "3":
+                CustomerCc.getAllCustomers();
+                break;
+            case "4":
+                CustomerCc.updateCustomer(scanner);
+                break;
+            case "5":
+                CustomerCc.deleteCustomer(scanner);
+                break;
+            case "6":
+                break;
+            default:
+                System.out.println("Invalid option. Please try again.");
+        }   
+    }
+    
+    private static void saveCustomer(Scanner scanner) {
         System.out.println("\n--- Save Customer ---");
         System.out.print("Enter first name: ");
         String firstName = scanner.nextLine();
@@ -28,7 +62,7 @@ public class CustomerCc {
         System.out.println("Customer saved successfully.");
     }
 
-    public static void getCustomer(Scanner scanner) {
+    private static void getCustomer(Scanner scanner) {
         System.out.println("\n--- Get Customer ---");
         System.out.print("Enter customer ID: ");
         String customerId = scanner.nextLine();
@@ -41,12 +75,12 @@ public class CustomerCc {
         }
     }
     
-    public static void getAllCustomers() {
+    private static void getAllCustomers() {
         System.out.println("\n--- Get All Customers ---");
         CustomerDao.getAllCustomers().forEach(System.out::println);
     }
     
-    public static void updateCustomer(Scanner scanner) {
+    private static void updateCustomer(Scanner scanner) {
         System.out.println("\n--- Update Customer ---");
         System.out.print("Enter customer ID: ");
         String customerId = scanner.nextLine();
@@ -57,7 +91,7 @@ public class CustomerCc {
             return;
         }
 
-        System.out.println("Customer found: " + customer);
+        System.out.println("Customer found: " + customer.getFirstName() + " " + customer.getLastName());
         System.out.println("Which field do you want to update?");
         System.out.println("1. First Name");
         System.out.println("2. Last Name");
@@ -108,7 +142,7 @@ public class CustomerCc {
         System.out.println("Customer updated successfully.");
     }
     
-    public static void deleteCustomer(Scanner scanner) {
+    private static void deleteCustomer(Scanner scanner) {
         System.out.println("\n--- Delete Customer ---");
         System.out.print("Enter customer ID: ");
         String customerId = scanner.nextLine();

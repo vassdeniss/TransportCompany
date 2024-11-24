@@ -6,7 +6,6 @@ import org.f108349.denis.entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
  
 public class CustomerDao {
@@ -24,11 +23,13 @@ public class CustomerDao {
         Customer customer;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
-            customer = session.get(Customer.class, id);
+            customer = session
+                    .createQuery("select c from Customer c where c.isDeleted = false", Customer.class)
+                    .getSingleResult();
             tx.commit();
         }
         
-        if (customer == null || (customer != null && customer.isDeleted())) {
+        if (customer == null) {
             return null;
         }
         
@@ -36,19 +37,17 @@ public class CustomerDao {
     }
     
     public static List<CustomerDto> getAllCustomers() {
-        List<Customer> customers;
+        List<CustomerDto> customers;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             customers = session
-                    .createQuery("select c from Customer c where c.isDeleted = false", Customer.class)
+                    .createQuery("select new org.f108349.denis.dto.CustomerDto(c) " +
+                            "from Customer c where c.isDeleted = false", CustomerDto.class)
                     .getResultList();
             tx.commit();
         }
         
-        List<CustomerDto> customerDtos = new ArrayList<>();
-        customers.forEach(customer -> customerDtos.add(new CustomerDto(customer)));
-        
-        return customerDtos;
+        return customers;
     }
     
     public static void updateCustomer(CustomerDto customerDto) {
