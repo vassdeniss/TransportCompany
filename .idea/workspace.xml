@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="feat: added customer delete and DTO layer">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CompanyCc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CompanyDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="feat: added company operations">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleTypeCc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleTypeDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/VehicleTypeDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CustomerCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CustomerCc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CustomerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CustomerDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/VehicleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/VehicleType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +115,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.f108349.denis.ConsoleCommands" />
       <recent name="org.f108349.denis.dao" />
       <recent name="org.f108349.denis.dto" />
     </key>
@@ -172,7 +170,7 @@
       <workItem from="1732485120188" duration="199000" />
       <workItem from="1732485351960" duration="144000" />
       <workItem from="1732485514972" duration="303000" />
-      <workItem from="1732485831847" duration="1746000" />
+      <workItem from="1732485831847" duration="8604000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />
@@ -230,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732479702606</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: added company operations">
+      <option name="closed" value="true" />
+      <created>1732488681358</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732488681358</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +250,7 @@
     <MESSAGE value="feat: added get all method" />
     <MESSAGE value="feat: added customer update method" />
     <MESSAGE value="feat: added customer delete and DTO layer" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added customer delete and DTO layer" />
+    <MESSAGE value="feat: added company operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: added company operations" />
   </component>
 </project>

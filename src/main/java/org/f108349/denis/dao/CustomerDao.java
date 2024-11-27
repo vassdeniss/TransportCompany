@@ -24,7 +24,8 @@ public class CustomerDao {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             customer = session
-                    .createQuery("select c from Customer c where c.isDeleted = false", Customer.class)
+                    .createQuery("select c from Customer c where c.isDeleted = false and id = :id", Customer.class)
+                    .setParameter("id", id)
                     .getSingleResult();
             tx.commit();
         }

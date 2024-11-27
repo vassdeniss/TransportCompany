@@ -28,7 +28,7 @@ public class CompanyDao {
             tx.commit();
         }
         
-        if (company == null || (company != null && company.isDeleted())) {
+        if (company == null || company.isDeleted()) {
             return null;
         }
         

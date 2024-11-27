@@ -2,6 +2,7 @@ package org.f108349.denis;
 
 import org.f108349.denis.ConsoleCommands.CompanyCc;
 import org.f108349.denis.ConsoleCommands.CustomerCc;
+import org.f108349.denis.ConsoleCommands.VehicleTypeCc;
 import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.hibernate.Session;
 
@@ -19,6 +20,7 @@ public class Main {
                 System.out.println("\nPlease select an option:");
                 System.out.println("1. Customer");
                 System.out.println("2. Company");
+                System.out.println("3. Vehicle Type");
                 System.out.println("6. Exit");
                 System.out.print("Your choice: ");
                 
@@ -29,6 +31,9 @@ public class Main {
                         break;
                     case "2":
                         CompanyCc.run(scanner);
+                        break;
+                    case "3":
+                        VehicleTypeCc.run(scanner);
                         break;
                     case "6":
                         isRunning = false;
