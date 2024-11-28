@@ -1,6 +1,7 @@
 package org.f108349.denis.dao;
 
 import org.f108349.denis.configuration.SessionFactoryUtil;
+import org.f108349.denis.dto.CompanyDto;
 import org.f108349.denis.dto.CustomerDto;
 import org.f108349.denis.entity.Customer;
 import org.hibernate.Session;
@@ -20,21 +21,19 @@ public class CustomerDao {
     }
     
     public static CustomerDto getCustomerById(String id) {
-        Customer customer;
+        CustomerDto customer;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             customer = session
-                    .createQuery("select c from Customer c where c.isDeleted = false and id = :id", Customer.class)
+                    .createQuery("select new org.f108349.denis.dto.CustomerDto(c) from Customer c " +
+                            "where c.isDeleted = false and id = :id", CustomerDto.class)
                     .setParameter("id", id)
-                    .getSingleResult();
+                    .uniqueResultOptional()
+                    .orElse(null);  
             tx.commit();
         }
         
-        if (customer == null) {
-            return null;
-        }
-        
-        return new CustomerDto(customer);
+        return customer;
     }
     
     public static List<CustomerDto> getAllCustomers() {

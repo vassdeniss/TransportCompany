@@ -2,11 +2,11 @@ package org.f108349.denis.dao;
 
 import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.CompanyDto;
+import org.f108349.denis.dto.VehicleTypeDto;
 import org.f108349.denis.entity.Company;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CompanyDao {
@@ -21,34 +21,33 @@ public class CompanyDao {
     }
     
     public static CompanyDto getCompanyById(String id) {
-        Company company;
+        CompanyDto company;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
-            company = session.get(Company.class, id);
+            company = session
+                    .createQuery("select new org.f108349.denis.dto.CompanyDto(c) from Company c " +
+                            "where c.isDeleted = false and id = :id", CompanyDto.class)
+                    .setParameter("id", id)
+                    .uniqueResultOptional()
+                    .orElse(null);               
             tx.commit();
         }
         
-        if (company == null || company.isDeleted()) {
-            return null;
-        }
-        
-        return new CompanyDto(company);
+        return company;
     }
     
     public static List<CompanyDto> getAllCompanies() {
-        List<Company> companies;
+        List<CompanyDto> companies;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             companies = session
-                    .createQuery("select c from Company c where c.isDeleted = false", Company.class)
+                    .createQuery("select new org.f108349.denis.dto.CompanyDto(c) " +
+                            "from Company c where c.isDeleted = false", CompanyDto.class)
                     .getResultList();
             tx.commit();
         }
         
-        List<CompanyDto> companyDtos = new ArrayList<>();
-        companies.forEach(company -> companyDtos.add(new CompanyDto(company)));
-        
-        return companyDtos;
+        return companies;
     }
     
     public static void updateCompany(CompanyDto companyDto) {
