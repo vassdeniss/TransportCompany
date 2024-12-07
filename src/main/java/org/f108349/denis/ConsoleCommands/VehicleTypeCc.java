@@ -67,7 +67,7 @@ public class VehicleTypeCc {
     
     private static void getAllVehicleTypes(VehicleTypeDao dao) {
         System.out.println("\n--- Get All Vehicle Types ---");
-        dao.getAllVehicleTypes().forEach(System.out::println);
+        dao.getAllVehicleTypesWhereNotDeleted().forEach(System.out::println);
     }
     
     private static void updateVehicleType(Scanner scanner, VehicleTypeDao dao) {
@@ -103,7 +103,11 @@ public class VehicleTypeCc {
             return;
         }
         
-        dao.deleteVehicleType(vehicleTypeId);
-        System.out.println("Vehicle Type deleted successfully.");
+        try {
+            dao.deleteVehicleType(vehicleTypeId);
+            System.out.println("Vehicle Type deleted successfully.");
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="feat: added vehicle operations">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/BaseDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/EmployeeClassificationCc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/EmployeeClassificationDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/EmployeeClassificationDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CompanyCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CompanyCc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CustomerCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CustomerCc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleCc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleTypeCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleTypeCc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleTypeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleTypeDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/VehicleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/VehicleDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/EmployeeClassification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/EmployeeClassification.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,8 +120,8 @@
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.f108349.denis.ConsoleCommands" />
-      <recent name="org.f108349.denis.dto" />
       <recent name="org.f108349.denis.dao" />
+      <recent name="org.f108349.denis.dto" />
     </key>
   </component>
   <component name="RunManager">
@@ -173,7 +174,7 @@
       <workItem from="1732485120188" duration="199000" />
       <workItem from="1732485351960" duration="144000" />
       <workItem from="1732485514972" duration="303000" />
-      <workItem from="1732485831847" duration="48249000" />
+      <workItem from="1732485831847" duration="55608000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />
@@ -273,16 +274,5 @@
     <MESSAGE value="feat: added vehicle type operations" />
     <MESSAGE value="feat: added vehicle operations" />
     <option name="LAST_COMMIT_MESSAGE" value="feat: added vehicle operations" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/BaseDao.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

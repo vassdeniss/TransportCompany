@@ -77,6 +77,8 @@ public class VehicleDao extends BaseDao<VehicleDto, Vehicle> {
             vehicle.setLicensePlate(vehicleDto.getLicensePlate());
             vehicle.setCapacity(vehicleDto.getCapacity());
             
+            this.applyCompanyAndVehicleType(session, vehicleDto, vehicle);
+            
             session.merge(vehicle);
             tx.commit();
         }
@@ -89,6 +91,28 @@ public class VehicleDao extends BaseDao<VehicleDto, Vehicle> {
             vehicle.setDeleted(true);
             session.merge(vehicle);
             tx.commit();
+        }
+    }
+    
+    private void applyCompanyAndVehicleType(Session session, VehicleDto vehicleDto, Vehicle vehicle) {
+        // TODO: replace base with else throw
+        // TODO: could go to base
+        if (vehicleDto.getCompanyId() != null) {
+            Company company = session.createQuery(
+                "SELECT c FROM Company c WHERE c.id = :id AND c.isDeleted = false", Company.class)
+                .setParameter("id", vehicleDto.getCompanyId())
+                .uniqueResultOptional()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid company ID provided."));
+            vehicle.setCompany(company);
+        }
+
+        if (vehicleDto.getVehicleTypeId() != null) {
+            VehicleType vehicleType = session.createQuery(
+                "SELECT vt FROM VehicleType vt WHERE vt.id = :id AND vt.isDeleted = false", VehicleType.class)
+                .setParameter("id", vehicleDto.getVehicleTypeId())
+                .uniqueResultOptional()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid vehicle type ID provided"));
+            vehicle.setVehicleType(vehicleType);
         }
     }
 }

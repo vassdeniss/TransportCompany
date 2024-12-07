@@ -101,6 +101,8 @@ public class VehicleCc {
         System.out.println("1. Registration Plate");
         System.out.println("2. Model");
         System.out.println("3. Capacity");
+        System.out.println("4. Company");
+        System.out.println("5. Vehicle Type");
         System.out.print("Your choice: ");
         String fieldChoice = scanner.nextLine();
 
@@ -123,6 +125,18 @@ public class VehicleCc {
                 System.out.print("Enter new Capacity: ");
                 newValue = scanner.nextLine();
                 vehicle.setCapacity(Integer.parseInt(newValue));
+                break;
+            case "4":
+                System.out.println("Current Company: " + vehicle.getCompany().getName());
+                System.out.print("Enter new Company ID: ");
+                newValue = scanner.nextLine();
+                vehicle.setCompanyId(newValue);
+                break;
+            case "5":
+                System.out.println("Current Vehicle Type: " + vehicle.getVehicleType().getTypeName());
+                System.out.print("Enter new Vehicle Type ID: ");
+                newValue = scanner.nextLine();
+                vehicle.setVehicleTypeId(newValue);
                 break;
             default:
                 System.out.println("Invalid choice. No updates made.");

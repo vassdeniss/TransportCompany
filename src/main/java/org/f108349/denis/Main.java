@@ -1,9 +1,6 @@
 package org.f108349.denis;
 
-import org.f108349.denis.ConsoleCommands.CompanyCc;
-import org.f108349.denis.ConsoleCommands.CustomerCc;
-import org.f108349.denis.ConsoleCommands.VehicleCc;
-import org.f108349.denis.ConsoleCommands.VehicleTypeCc;
+import org.f108349.denis.ConsoleCommands.*;
 import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.hibernate.Session;
 
@@ -21,9 +18,11 @@ public class Main {
                 System.out.println("\nPlease select an option:");
                 System.out.println("1. Customer");
                 System.out.println("2. Company");
-                System.out.println("3. Vehicle Type");
-                System.out.println("4. Vehicle");
-                System.out.println("6. Exit");
+                System.out.println("3. Employee");
+                System.out.println("4. Employee Classification");
+                System.out.println("5. Vehicle");
+                System.out.println("6. Vehicle Type");
+                System.out.println("7. Exit");
                 System.out.print("Your choice: ");
                 
                 String choice = scanner.nextLine();
@@ -34,13 +33,16 @@ public class Main {
                     case "2":
                         CompanyCc.run(scanner);
                         break;
-                    case "3":
-                        VehicleTypeCc.run(scanner);
-                        break;
                     case "4":
+                        EmployeeClassificationCc.run(scanner);
+                        break;
+                    case "5":
                         VehicleCc.run(scanner);
                         break;
                     case "6":
+                        VehicleTypeCc.run(scanner);
+                        break;
+                    case "7":
                         isRunning = false;
                         System.out.println("Exiting application...");
                         break;

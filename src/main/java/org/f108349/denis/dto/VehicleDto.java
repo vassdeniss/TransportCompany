@@ -1,6 +1,8 @@
 package org.f108349.denis.dto;
 
+import org.f108349.denis.entity.Company;
 import org.f108349.denis.entity.Vehicle;
+import org.f108349.denis.entity.VehicleType;
 
 public class VehicleDto {
     private String id;
@@ -8,7 +10,9 @@ public class VehicleDto {
     private String licensePlate;
     private int capacity;
     private String companyId;
+    private Company company;
     private String vehicleTypeId;
+    private VehicleType vehicleType;
     
     public VehicleDto(String model, String licensePlate, 
                       int capacity, String companyId, String vehicleTypeId) {
@@ -26,6 +30,8 @@ public class VehicleDto {
         this.capacity = vehicle.getCapacity();
         this.companyId = vehicle.getCompany() != null ? vehicle.getCompany().getId() : null;
         this.vehicleTypeId = vehicle.getVehicleType() != null ? vehicle.getVehicleType().getId() : null;
+        this.company = vehicle.getCompany();
+        this.vehicleType = vehicle.getVehicleType();
     }
 
     public String getId() {
@@ -64,6 +70,14 @@ public class VehicleDto {
         this.companyId = companyId;
     }
     
+    public Company getCompany() {
+        return this.company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+    
     public String getVehicleTypeId() {
         return this.vehicleTypeId;
     }
@@ -72,11 +86,21 @@ public class VehicleDto {
         this.vehicleTypeId = vehicleTypeId;
     }
     
+    public VehicleType getVehicleType() {
+        return this.vehicleType;
+    }
+    
+    public void setVehicleType(VehicleType vehicleType) {
+        this.vehicleType = vehicleType;
+    }
+    
     @Override
     public String toString() {
         return "Information about " + this.licensePlate + ":" + 
                "\n    License Plate is '" + this.licensePlate + '\'' + 
                "\n    Model is '" + this.model + '\'' + 
-               "\n    Capacity is '" + this.capacity + '\'';
+               "\n    Capacity is '" + this.capacity + '\'' + 
+               "\n    Type is '" + this.vehicleType.getTypeName() + '\'' +
+               "\n    Company is '" + this.company.getName() + '\'';
     }
 }
