@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class VehicleCc {
     public static void run(Scanner scanner) {
+        VehicleDao dao = new VehicleDao();
+        
         System.out.println("\nPlease select an option:");
         System.out.println("1. Save Vehicle");
         System.out.println("2. Get Vehicle");
@@ -19,19 +21,19 @@ public class VehicleCc {
         String choice = scanner.nextLine();
         switch (choice) {
             case "1":
-                VehicleCc.saveVehicle(scanner);
+                VehicleCc.saveVehicle(scanner, dao);
                 break;
             case "2":
-                VehicleCc.getVehicle(scanner);
+                VehicleCc.getVehicle(scanner, dao);
                 break;
             case "3":
-                VehicleCc.getAllVehicles();
+                VehicleCc.getAllVehicles(dao);
                 break;
             case "4":
-                VehicleCc.updateVehicle(scanner);
+                VehicleCc.updateVehicle(scanner, dao);
                 break;
             case "5":
-                VehicleCc.deleteVehicle(scanner);
+                VehicleCc.deleteVehicle(scanner, dao);
                 break;
             case "6":
                 break;
@@ -40,7 +42,7 @@ public class VehicleCc {
         }   
     }
     
-    private static void saveVehicle(Scanner scanner) {
+    private static void saveVehicle(Scanner scanner, VehicleDao dao) {
         System.out.println("\n--- Save Vehicle ---");
         System.out.print("Enter registration number: ");
         String registrationNumber = scanner.nextLine();
@@ -59,18 +61,18 @@ public class VehicleCc {
         String companyId = scanner.nextLine();
 
         VehicleDto vehicle = new VehicleDto(registrationNumber, model, capacity, companyId, vehicleTypeId);
-        boolean saved = VehicleDao.saveVehicle(vehicle);
+        boolean saved = dao.saveVehicle(vehicle);
         if (saved) {
             System.out.println("Vehicle saved successfully.");
         }
     }
 
-    private static void getVehicle(Scanner scanner) {
+    private static void getVehicle(Scanner scanner, VehicleDao dao) {
         System.out.println("\n--- Get Vehicle ---");
         System.out.print("Enter vehicle ID: ");
         String vehicleId = scanner.nextLine();
 
-        VehicleDto vehicle = VehicleDao.getVehicleById(vehicleId);
+        VehicleDto vehicle = dao.getVehicleByIdWhereNotDeleted(vehicleId);
         if (vehicle != null) {
             System.out.println(vehicle);
         } else {
@@ -78,17 +80,17 @@ public class VehicleCc {
         }
     }
     
-    private static void getAllVehicles() {
+    private static void getAllVehicles(VehicleDao dao) {
         System.out.println("\n--- Get All Vehicles ---");
-        VehicleDao.getAllVehicles().forEach(System.out::println);
+        dao.getAllVehiclesWhereNotDeleted().forEach(System.out::println);
     }
     
-    private static void updateVehicle(Scanner scanner) {
+    private static void updateVehicle(Scanner scanner, VehicleDao dao) {
         System.out.println("\n--- Update Vehicle ---");
         System.out.print("Enter vehicle ID: ");
         String vehicleId = scanner.nextLine();
 
-        VehicleDto vehicle = VehicleDao.getVehicleById(vehicleId);
+        VehicleDto vehicle = dao.getVehicleByIdWhereNotDeleted(vehicleId);
         if (vehicle == null) {
             System.out.println("Vehicle not found with ID: " + vehicleId);
             return;
@@ -127,22 +129,22 @@ public class VehicleCc {
                 return;
         }
 
-        VehicleDao.updateVehicle(vehicle);
+        dao.updateVehicle(vehicle);
         System.out.println("Vehicle updated successfully.");
     }
     
-    private static void deleteVehicle(Scanner scanner) {
+    private static void deleteVehicle(Scanner scanner, VehicleDao dao) {
         System.out.println("\n--- Delete Vehicle ---");
         System.out.print("Enter vehicle ID: ");
         String vehicleId = scanner.nextLine();
 
-        VehicleDto vehicle = VehicleDao.getVehicleById(vehicleId);
+        VehicleDto vehicle = dao.getVehicleByIdWhereNotDeleted(vehicleId);
         if (vehicle == null) {
             System.out.println("Vehicle not found with ID: " + vehicleId);
             return;
         }
         
-        VehicleDao.deleteVehicle(vehicleId);
+        dao.deleteVehicle(vehicleId);
         System.out.println("Vehicle deleted successfully.");
     }
 }

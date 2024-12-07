@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class CustomerCc {
     public static void run(Scanner scanner) {
+        CustomerDao dao = new CustomerDao();
+        
         System.out.println("\nPlease select an option:");
         System.out.println("1. Save Customer");
         System.out.println("2. Get Customer");
@@ -19,19 +21,19 @@ public class CustomerCc {
         String choice = scanner.nextLine();
         switch (choice) {
             case "1":
-                CustomerCc.saveCustomer(scanner);
+                CustomerCc.saveCustomer(scanner, dao);
                 break;
             case "2":
-                CustomerCc.getCustomer(scanner);
+                CustomerCc.getCustomer(scanner, dao);
                 break;
             case "3":
-                CustomerCc.getAllCustomers();
+                CustomerCc.getAllCustomers(dao);
                 break;
             case "4":
-                CustomerCc.updateCustomer(scanner);
+                CustomerCc.updateCustomer(scanner, dao);
                 break;
             case "5":
-                CustomerCc.deleteCustomer(scanner);
+                CustomerCc.deleteCustomer(scanner, dao);
                 break;
             case "6":
                 break;
@@ -40,7 +42,7 @@ public class CustomerCc {
         }   
     }
     
-    private static void saveCustomer(Scanner scanner) {
+    private static void saveCustomer(Scanner scanner, CustomerDao dao) {
         System.out.println("\n--- Save Customer ---");
         System.out.print("Enter first name: ");
         String firstName = scanner.nextLine();
@@ -58,16 +60,16 @@ public class CustomerCc {
         String address = scanner.nextLine();
 
         CustomerDto customer = new CustomerDto(firstName, lastName, email, phone, address);
-        CustomerDao.saveCustomer(customer);
+        dao.saveCustomer(customer);
         System.out.println("Customer saved successfully.");
     }
 
-    private static void getCustomer(Scanner scanner) {
+    private static void getCustomer(Scanner scanner, CustomerDao dao) {
         System.out.println("\n--- Get Customer ---");
         System.out.print("Enter customer ID: ");
         String customerId = scanner.nextLine();
 
-        CustomerDto customer = CustomerDao.getCustomerById(customerId);
+        CustomerDto customer = dao.getCustomerByIdWhereNotDeleted(customerId);
         if (customer != null) {
             System.out.println(customer);
         } else {
@@ -75,17 +77,17 @@ public class CustomerCc {
         }
     }
     
-    private static void getAllCustomers() {
+    private static void getAllCustomers(CustomerDao dao) {
         System.out.println("\n--- Get All Customers ---");
-        CustomerDao.getAllCustomers().forEach(System.out::println);
+        dao.getAllCustomersWhereNotDeleted().forEach(System.out::println);
     }
     
-    private static void updateCustomer(Scanner scanner) {
+    private static void updateCustomer(Scanner scanner, CustomerDao dao) {
         System.out.println("\n--- Update Customer ---");
         System.out.print("Enter customer ID: ");
         String customerId = scanner.nextLine();
 
-        CustomerDto customer = CustomerDao.getCustomerById(customerId);
+        CustomerDto customer = dao.getCustomerByIdWhereNotDeleted(customerId);
         if (customer == null) {
             System.out.println("Customer not found with ID: " + customerId);
             return;
@@ -138,22 +140,22 @@ public class CustomerCc {
                 return;
         }
 
-        CustomerDao.updateCustomer(customer);
+        dao.updateCustomer(customer);
         System.out.println("Customer updated successfully.");
     }
     
-    private static void deleteCustomer(Scanner scanner) {
+    private static void deleteCustomer(Scanner scanner, CustomerDao dao) {
         System.out.println("\n--- Delete Customer ---");
         System.out.print("Enter customer ID: ");
         String customerId = scanner.nextLine();
 
-        CustomerDto customer = CustomerDao.getCustomerById(customerId);
+        CustomerDto customer = dao.getCustomerByIdWhereNotDeleted(customerId);
         if (customer == null) {
             System.out.println("Customer not found with ID: " + customerId);
             return;
         }
         
-        CustomerDao.deleteCustomer(customerId);
+        dao.deleteCustomer(customerId);
         System.out.println("Customer deleted successfully.");
     }
 }

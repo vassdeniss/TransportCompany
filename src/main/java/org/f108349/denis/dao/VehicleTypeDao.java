@@ -8,8 +8,8 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class VehicleTypeDao {
-    public static void saveVehicleType(VehicleTypeDto vehicleTypeDto) {
+public class VehicleTypeDao extends BaseDao<VehicleTypeDto, VehicleType> {
+    public void saveVehicleType(VehicleTypeDto vehicleTypeDto) {
         VehicleType vehicleType = new VehicleType(vehicleTypeDto.getTypeName());
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
@@ -18,23 +18,18 @@ public class VehicleTypeDao {
         }
     }
     
-    public static VehicleTypeDto getVehicleTypeById(String id) {
+    public VehicleTypeDto getVehicleTypeByIdWhereNotDeleted(String id) {
         VehicleTypeDto vehicleType;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
-            vehicleType = session
-                    .createQuery("select new org.f108349.denis.dto.VehicleTypeDto(vt) from VehicleType vt " +
-                            "where vt.isDeleted = false and id = :id", VehicleTypeDto.class)
-                    .setParameter("id", id)
-                    .uniqueResultOptional()
-                    .orElse(null);            
+            vehicleType = this.getByIdWhereNotDeleted(session, id, VehicleTypeDto.class, VehicleType.class);          
             tx.commit();
         }
         
         return vehicleType;
     }
     
-    public static List<VehicleTypeDto> getAllVehicleTypes() {
+    public List<VehicleTypeDto> getAllVehicleTypes() {
         List<VehicleTypeDto> vehicleTypes;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
@@ -48,7 +43,7 @@ public class VehicleTypeDao {
         return vehicleTypes;
     }
     
-    public static void updateVehicleType(VehicleTypeDto vehicleTypeDto) {
+    public void updateVehicleType(VehicleTypeDto vehicleTypeDto) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             VehicleType vehicleType = session.get(VehicleType.class, vehicleTypeDto.getId());
@@ -58,7 +53,7 @@ public class VehicleTypeDao {
         }
     }
     
-    public static void deleteVehicleType(String id) {
+    public void deleteVehicleType(String id) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             VehicleType vehicleType = session.get(VehicleType.class, id);

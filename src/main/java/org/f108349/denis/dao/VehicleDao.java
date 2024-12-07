@@ -10,8 +10,8 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class VehicleDao {
-    public static boolean saveVehicle(VehicleDto vehicleDto) {
+public class VehicleDao extends BaseDao<VehicleDto, Vehicle> {
+    public boolean saveVehicle(VehicleDto vehicleDto) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             
@@ -46,37 +46,29 @@ public class VehicleDao {
         }
     }
     
-    public static VehicleDto getVehicleById(String id) {
+    public VehicleDto getVehicleByIdWhereNotDeleted(String id) {
         VehicleDto vehicle;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
-            vehicle = session
-                    .createQuery("select new org.f108349.denis.dto.VehicleDto(v) from Vehicle v " +
-                            "where v.isDeleted = false and id = :id", VehicleDto.class)
-                    .setParameter("id", id)
-                    .uniqueResultOptional()
-                    .orElse(null); 
+            vehicle = this.getByIdWhereNotDeleted(session, id, VehicleDto.class, Vehicle.class);
             tx.commit();
         }
         
         return vehicle;
     }
     
-    public static List<VehicleDto> getAllVehicles() {
+    public List<VehicleDto> getAllVehiclesWhereNotDeleted() {
         List<VehicleDto> vehicles;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
-            vehicles = session
-                    .createQuery("select new org.f108349.denis.dto.VehicleDto(v) " +
-                            "from Vehicle v where v.isDeleted = false", VehicleDto.class)
-                    .getResultList();
+            vehicles = this.getAllWhereNotDeleted(session, VehicleDto.class, Vehicle.class);
             tx.commit();
         }
         
         return vehicles;
     }
     
-    public static void updateVehicle(VehicleDto vehicleDto) {
+    public void updateVehicle(VehicleDto vehicleDto) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             Vehicle vehicle = session.get(Vehicle.class, vehicleDto.getId());
@@ -90,7 +82,7 @@ public class VehicleDao {
         }
     }
     
-    public static void deleteVehicle(String id) {
+    public void deleteVehicle(String id) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             Vehicle vehicle = session.get(Vehicle.class, id);

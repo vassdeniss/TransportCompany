@@ -6,7 +6,9 @@ import org.f108349.denis.dto.CompanyDto;
 import java.util.Scanner;
 
 public class CompanyCc {
-        public static void run(Scanner scanner) {
+    public static void run(Scanner scanner) {
+        CompanyDao dao = new CompanyDao();
+        
         System.out.println("\nPlease select an option:");
         System.out.println("1. Save Company");
         System.out.println("2. Get Company");
@@ -19,19 +21,19 @@ public class CompanyCc {
         String choice = scanner.nextLine();
         switch (choice) {
             case "1":
-                CompanyCc.saveCompany(scanner);
+                CompanyCc.saveCompany(scanner, dao);
                 break;
             case "2":
-                CompanyCc.getCompany(scanner);
+                CompanyCc.getCompany(scanner, dao);
                 break;
             case "3":
-                CompanyCc.getAllCompanies();
+                CompanyCc.getAllCompanies(dao);
                 break;
             case "4":
-                CompanyCc.updateCompany(scanner);
+                CompanyCc.updateCompany(scanner, dao);
                 break;
             case "5":
-                CompanyCc.deleteCompany(scanner);
+                CompanyCc.deleteCompany(scanner, dao);
                 break;
             case "6":
                 break;
@@ -40,7 +42,7 @@ public class CompanyCc {
         }   
     }
     
-    private static void saveCompany(Scanner scanner) {
+    private static void saveCompany(Scanner scanner, CompanyDao dao) {
         System.out.println("\n--- Save Company ---");
         System.out.print("Enter name: ");
         String name = scanner.nextLine();
@@ -55,16 +57,16 @@ public class CompanyCc {
         String phone = scanner.nextLine();
 
         CompanyDto company = new CompanyDto(name, registrationNo, email, phone);
-        CompanyDao.saveCompany(company);
+        dao.saveCompany(company);
         System.out.println("Company saved successfully.");
     }
 
-    private static void getCompany(Scanner scanner) {
+    private static void getCompany(Scanner scanner, CompanyDao dao) {
         System.out.println("\n--- Get Company ---");
         System.out.print("Enter company ID: ");
         String companyId = scanner.nextLine();
 
-        CompanyDto company = CompanyDao.getCompanyById(companyId);
+        CompanyDto company = dao.getCompanyByIdWhereNotDeleted(companyId);
         if (company != null) {
             System.out.println(company);
         } else {
@@ -72,17 +74,17 @@ public class CompanyCc {
         }
     }
     
-    private static void getAllCompanies() {
+    private static void getAllCompanies(CompanyDao dao) {
         System.out.println("\n--- Get All Companies ---");
-        CompanyDao.getAllCompanies().forEach(System.out::println);
+        dao.getAllCompaniesWhereNotDeleted().forEach(System.out::println);
     }
     
-    private static void updateCompany(Scanner scanner) {
+    private static void updateCompany(Scanner scanner, CompanyDao dao) {
         System.out.println("\n--- Update Company ---");
         System.out.print("Enter company ID: ");
         String companyId = scanner.nextLine();
 
-        CompanyDto company = CompanyDao.getCompanyById(companyId);
+        CompanyDto company = dao.getCompanyByIdWhereNotDeleted(companyId);
         if (company == null) {
             System.out.println("Company not found with ID: " + companyId);
             return;
@@ -128,22 +130,22 @@ public class CompanyCc {
                 return;
         }
 
-        CompanyDao.updateCompany(company);
+        dao.updateCompany(company);
         System.out.println("Company updated successfully.");
     }
     
-    private static void deleteCompany(Scanner scanner) {
+    private static void deleteCompany(Scanner scanner, CompanyDao dao) {
         System.out.println("\n--- Delete Company ---");
         System.out.print("Enter company ID: ");
         String companyId = scanner.nextLine();
 
-        CompanyDto customer = CompanyDao.getCompanyById(companyId);
+        CompanyDto customer = dao.getCompanyByIdWhereNotDeleted(companyId);
         if (customer == null) {
             System.out.println("Customer not found with ID: " + companyId);
             return;
         }
         
-        CompanyDao.deleteCompany(companyId);
+        dao.deleteCompany(companyId);
         System.out.println("Customer deleted successfully.");
     }
 }

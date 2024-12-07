@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class VehicleTypeCc {
     public static void run(Scanner scanner) {
+        VehicleTypeDao dao = new VehicleTypeDao();
+        
         System.out.println("\nPlease select an option:");
         System.out.println("1. Save Vehicle Type");
         System.out.println("2. Get Vehicle Type");
@@ -19,19 +21,19 @@ public class VehicleTypeCc {
         String choice = scanner.nextLine();
         switch (choice) {
             case "1":
-                VehicleTypeCc.saveVehicleType(scanner);
+                VehicleTypeCc.saveVehicleType(scanner, dao);
                 break;
             case "2":
-                VehicleTypeCc.getVehicleType(scanner);
+                VehicleTypeCc.getVehicleType(scanner, dao);
                 break;
             case "3":
-                VehicleTypeCc.getAllVehicleTypes();
+                VehicleTypeCc.getAllVehicleTypes(dao);
                 break;
             case "4":
-                VehicleTypeCc.updateVehicleType(scanner);
+                VehicleTypeCc.updateVehicleType(scanner, dao);
                 break;
             case "5":
-                VehicleTypeCc.deleteVehicleType(scanner);
+                VehicleTypeCc.deleteVehicleType(scanner, dao);
                 break;
             case "6":
                 break;
@@ -40,22 +42,22 @@ public class VehicleTypeCc {
         }   
     }
     
-    private static void saveVehicleType(Scanner scanner) {
+    private static void saveVehicleType(Scanner scanner, VehicleTypeDao dao) {
         System.out.println("\n--- Save Vehicle Type ---");
         System.out.print("Enter type name: ");
         String typeName = scanner.nextLine();
 
         VehicleTypeDto vehicleType = new VehicleTypeDto(typeName);
-        VehicleTypeDao.saveVehicleType(vehicleType);
+        dao.saveVehicleType(vehicleType);
         System.out.println("Vehicle Type saved successfully.");
     }
 
-    private static void getVehicleType(Scanner scanner) {
+    private static void getVehicleType(Scanner scanner, VehicleTypeDao dao) {
         System.out.println("\n--- Get Vehicle Type ---");
         System.out.print("Enter vehicle type ID: ");
         String vehicleTypeId = scanner.nextLine();
 
-        VehicleTypeDto vehicleType = VehicleTypeDao.getVehicleTypeById(vehicleTypeId);
+        VehicleTypeDto vehicleType = dao.getVehicleTypeByIdWhereNotDeleted(vehicleTypeId);
         if (vehicleType != null) {
             System.out.println(vehicleType);
         } else {
@@ -63,17 +65,17 @@ public class VehicleTypeCc {
         }
     }
     
-    private static void getAllVehicleTypes() {
+    private static void getAllVehicleTypes(VehicleTypeDao dao) {
         System.out.println("\n--- Get All Vehicle Types ---");
-        VehicleTypeDao.getAllVehicleTypes().forEach(System.out::println);
+        dao.getAllVehicleTypes().forEach(System.out::println);
     }
     
-    private static void updateVehicleType(Scanner scanner) {
+    private static void updateVehicleType(Scanner scanner, VehicleTypeDao dao) {
         System.out.println("\n--- Update Vehicle Type ---");
         System.out.print("Enter vehicle type ID: ");
         String vehicleTypeId = scanner.nextLine();
 
-        VehicleTypeDto vehicleType = VehicleTypeDao.getVehicleTypeById(vehicleTypeId);
+        VehicleTypeDto vehicleType = dao.getVehicleTypeByIdWhereNotDeleted(vehicleTypeId);
         if (vehicleType == null) {
             System.out.println("Vehicle Type not found with ID: " + vehicleTypeId);
             return;
@@ -86,22 +88,22 @@ public class VehicleTypeCc {
         String newValue = scanner.nextLine();
         vehicleType.setTypeName(newValue);
 
-        VehicleTypeDao.updateVehicleType(vehicleType);
+        dao.updateVehicleType(vehicleType);
         System.out.println("Vehicle Type updated successfully.");
     }
     
-    private static void deleteVehicleType(Scanner scanner) {
+    private static void deleteVehicleType(Scanner scanner, VehicleTypeDao dao) {
         System.out.println("\n--- Delete Vehicle Type ---");
         System.out.print("Enter vehicle type ID: ");
         String vehicleTypeId = scanner.nextLine();
 
-        VehicleTypeDto vehicleType = VehicleTypeDao.getVehicleTypeById(vehicleTypeId);
+        VehicleTypeDto vehicleType = dao.getVehicleTypeByIdWhereNotDeleted(vehicleTypeId);
         if (vehicleType == null) {
             System.out.println("Vehicle Type not found with ID: " + vehicleTypeId);
             return;
         }
         
-        VehicleTypeDao.deleteVehicleType(vehicleTypeId);
+        dao.deleteVehicleType(vehicleTypeId);
         System.out.println("Vehicle Type deleted successfully.");
     }
 }

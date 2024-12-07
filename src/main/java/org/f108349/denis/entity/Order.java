@@ -5,7 +5,6 @@ import org.f108349.denis.entity.enums.Status;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
 @Table(name = "`order`")
@@ -26,8 +25,8 @@ public class Order {
     @Column(name = "total_cost", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalCost;
 
-    @Column(name = "total_weigth", nullable = false, precision = 10, scale = 2)
-    private BigDecimal totalWeigth;
+    @Column(name = "total_weight", nullable = false, precision = 10, scale = 2)
+    private BigDecimal totalWeight;
 
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
@@ -51,8 +50,4 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "vehicle_id", foreignKey = @ForeignKey(name = "FK_vehicle_order"))
     private Vehicle vehicle;
-
-    @ManyToOne
-    @JoinColumn(name = "vehicle_type_id", foreignKey = @ForeignKey(name = "FK_vehicle_type_order"))
-    private VehicleType vehicleType;
 }

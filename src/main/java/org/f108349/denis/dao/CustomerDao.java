@@ -1,7 +1,6 @@
 package org.f108349.denis.dao;
 
 import org.f108349.denis.configuration.SessionFactoryUtil;
-import org.f108349.denis.dto.CompanyDto;
 import org.f108349.denis.dto.CustomerDto;
 import org.f108349.denis.entity.Customer;
 import org.hibernate.Session;
@@ -9,8 +8,8 @@ import org.hibernate.Transaction;
 
 import java.util.List;
  
-public class CustomerDao {
-    public static void saveCustomer(CustomerDto customerDto) {
+public class CustomerDao extends BaseDao<CustomerDto, Customer> {
+    public void saveCustomer(CustomerDto customerDto) {
         Customer customer = new Customer(customerDto.getFirstName(), customerDto.getLastName(), 
                 customerDto.getEmail(), customerDto.getPhone(), customerDto.getAddress());
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
@@ -20,37 +19,29 @@ public class CustomerDao {
         }
     }
     
-    public static CustomerDto getCustomerById(String id) {
+    public CustomerDto getCustomerByIdWhereNotDeleted(String id) {
         CustomerDto customer;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
-            customer = session
-                    .createQuery("select new org.f108349.denis.dto.CustomerDto(c) from Customer c " +
-                            "where c.isDeleted = false and id = :id", CustomerDto.class)
-                    .setParameter("id", id)
-                    .uniqueResultOptional()
-                    .orElse(null);  
+            customer = this.getByIdWhereNotDeleted(session, id, CustomerDto.class, Customer.class);
             tx.commit();
         }
         
         return customer;
     }
     
-    public static List<CustomerDto> getAllCustomers() {
+    public List<CustomerDto> getAllCustomersWhereNotDeleted() {
         List<CustomerDto> customers;
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
-            customers = session
-                    .createQuery("select new org.f108349.denis.dto.CustomerDto(c) " +
-                            "from Customer c where c.isDeleted = false", CustomerDto.class)
-                    .getResultList();
+            customers = this.getAllWhereNotDeleted(session, CustomerDto.class, Customer.class);
             tx.commit();
         }
         
         return customers;
     }
     
-    public static void updateCustomer(CustomerDto customerDto) {
+    public void updateCustomer(CustomerDto customerDto) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             Customer customer = session.get(Customer.class, customerDto.getId());
@@ -66,7 +57,7 @@ public class CustomerDao {
         }
     }
     
-    public static void deleteCustomer(String id) {
+    public void deleteCustomer(String id) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();
             Customer customer = session.get(Customer.class, id);
