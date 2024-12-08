@@ -13,9 +13,8 @@ public class VehicleTypeCc {
         System.out.println("1. Save Vehicle Type");
         System.out.println("2. Get Vehicle Type");
         System.out.println("3. Get All Vehicle Types");
-        System.out.println("4. Update Vehicle Type");
-        System.out.println("5. Delete Vehicle Type");
-        System.out.println("6. Exit");
+        System.out.println("4. Delete Vehicle Type");
+        System.out.println("5. Exit");
         System.out.print("Your choice: ");
         
         String choice = scanner.nextLine();
@@ -30,12 +29,9 @@ public class VehicleTypeCc {
                 VehicleTypeCc.getAllVehicleTypes(dao);
                 break;
             case "4":
-                VehicleTypeCc.updateVehicleType(scanner, dao);
-                break;
-            case "5":
                 VehicleTypeCc.deleteVehicleType(scanner, dao);
                 break;
-            case "6":
+            case "5":
                 break;
             default:
                 System.out.println("Invalid option. Please try again.");
@@ -68,28 +64,6 @@ public class VehicleTypeCc {
     private static void getAllVehicleTypes(VehicleTypeDao dao) {
         System.out.println("\n--- Get All Vehicle Types ---");
         dao.getAllVehicleTypesWhereNotDeleted().forEach(System.out::println);
-    }
-    
-    private static void updateVehicleType(Scanner scanner, VehicleTypeDao dao) {
-        System.out.println("\n--- Update Vehicle Type ---");
-        System.out.print("Enter vehicle type ID: ");
-        String vehicleTypeId = scanner.nextLine();
-
-        VehicleTypeDto vehicleType = dao.getVehicleTypeByIdWhereNotDeleted(vehicleTypeId);
-        if (vehicleType == null) {
-            System.out.println("Vehicle Type not found with ID: " + vehicleTypeId);
-            return;
-        }
-
-        System.out.println("Vehicle Type found: " + vehicleType.getTypeName());
-        
-        System.out.println("Current Type Name: " + vehicleType.getTypeName());
-        System.out.print("Enter new Type Name: ");
-        String newValue = scanner.nextLine();
-        vehicleType.setTypeName(newValue);
-
-        dao.updateVehicleType(vehicleType);
-        System.out.println("Vehicle Type updated successfully.");
     }
     
     private static void deleteVehicleType(Scanner scanner, VehicleTypeDao dao) {

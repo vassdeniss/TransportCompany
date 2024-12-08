@@ -25,7 +25,7 @@ public class Order {
     @Column(name = "total_cost", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalCost;
 
-    @Column(name = "total_weight", nullable = false, precision = 10, scale = 2)
+    @Column(name = "total_weigth", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalWeight;
 
     @Column(name = "is_deleted", nullable = false)

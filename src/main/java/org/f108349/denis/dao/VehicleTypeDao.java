@@ -44,16 +44,6 @@ public class VehicleTypeDao extends BaseDao<VehicleTypeDto, VehicleType> {
         return vehicleTypes;
     }
     
-    public void updateVehicleType(VehicleTypeDto vehicleTypeDto) {
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
-            Transaction tx = session.beginTransaction();
-            VehicleType vehicleType = session.get(VehicleType.class, vehicleTypeDto.getId());
-            vehicleType.setTypeName(vehicleTypeDto.getTypeName());
-            session.merge(vehicleType);
-            tx.commit();
-        }
-    }
-    
     public void deleteVehicleType(String id) {
         try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
             Transaction tx = session.beginTransaction();

@@ -21,6 +21,7 @@ public class SessionFactoryUtil {
                     .addAnnotatedClass(VehicleType.class)
                     .addAnnotatedClass(Vehicle.class)
                     .addAnnotatedClass(Order.class);
+                
                 registry = new StandardServiceRegistryBuilder()
                     .applySettings(config.getProperties()).build();
                 sessionFactory = config.buildSessionFactory(registry);
@@ -28,6 +29,7 @@ public class SessionFactoryUtil {
                 if (registry != null) {
                     StandardServiceRegistryBuilder.destroy(registry);
                 }
+                
                 e.printStackTrace();
                 throw new RuntimeException("There was an issue building the SessionFactory.");
             }        
