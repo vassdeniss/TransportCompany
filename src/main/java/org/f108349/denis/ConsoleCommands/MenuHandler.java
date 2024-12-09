@@ -22,7 +22,6 @@ public class MenuHandler {
             System.out.println(entry.getKey() + ". " + entry.getValue().getDescription());
         }
         
-        // TODO: test
         System.out.print("Your choice: ");
         String choice = scanner.nextLine();
         MenuOption option = actions.get(choice);

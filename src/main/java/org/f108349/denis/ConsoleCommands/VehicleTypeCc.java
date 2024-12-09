@@ -21,24 +21,22 @@ public class VehicleTypeCc {
     
     private static void saveVehicleType(Scanner scanner, VehicleTypeDao dao) {
         System.out.println("\n--- Save Vehicle Type ---");
-        ConsoleUtils utils = new ConsoleUtils(scanner);
-        String typeName = utils.promptString("Enter type name: ");
+        String typeName = ConsoleUtils.promptString(scanner, "Enter type name: ");
 
         VehicleTypeDto vehicleType = new VehicleTypeDto(typeName);
         dao.saveVehicleType(vehicleType);
-        System.out.println("Vehicle Type saved successfully.");
+        System.out.println("Vehicle type saved successfully.");
     }
 
     private static void getVehicleType(Scanner scanner, VehicleTypeDao dao) {
         System.out.println("\n--- Get Vehicle Type ---");
-        ConsoleUtils utils = new ConsoleUtils(scanner);
-        String vehicleTypeId = utils.promptString("Enter vehicle type ID: ");
+        String vehicleTypeId = ConsoleUtils.promptString(scanner, "Enter vehicle type ID: ");
 
         VehicleTypeDto vehicleType = dao.getVehicleTypeByIdWhereNotDeleted(vehicleTypeId);
         if (vehicleType != null) {
             System.out.println(vehicleType);
         } else {
-            System.out.println("Vehicle Type not found with ID: " + vehicleTypeId);
+            System.out.println("Vehicle type not found with ID: " + vehicleTypeId);
         }
     }
     
@@ -49,18 +47,17 @@ public class VehicleTypeCc {
     
     private static void deleteVehicleType(Scanner scanner, VehicleTypeDao dao) {
         System.out.println("\n--- Delete Vehicle Type ---");
-        ConsoleUtils utils = new ConsoleUtils(scanner);
-        String vehicleTypeId = utils.promptString("Enter vehicle type ID: ");
+        String vehicleTypeId = ConsoleUtils.promptString(scanner, "Enter vehicle type ID: ");
 
         VehicleTypeDto vehicleType = dao.getVehicleTypeByIdWhereNotDeleted(vehicleTypeId);
         if (vehicleType == null) {
-            System.out.println("Vehicle Type not found with ID: " + vehicleTypeId);
+            System.out.println("Vehicle type not found with ID: " + vehicleTypeId);
             return;
         }
         
         try {
             dao.deleteVehicleType(vehicleTypeId);
-            System.out.println("Vehicle Type deleted successfully.");
+            System.out.println("Vehicle type deleted successfully.");
         } catch (IllegalStateException e) {
             System.out.println(e.getMessage());
         }

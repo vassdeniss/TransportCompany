@@ -3,18 +3,12 @@ package org.f108349.denis.ConsoleCommands;
 import java.util.Scanner;
 
 public class ConsoleUtils {
-    private final Scanner scanner;
-
-    public ConsoleUtils(Scanner scanner) {
-        this.scanner = scanner;
-    }
-
-    public String promptString(String prompt) {
+    public static String promptString(Scanner scanner,  String prompt) {
         System.out.print(prompt);
         return scanner.nextLine();
     }
 
-    public int promptInt(String prompt) {
+    public static int promptInt(Scanner scanner, String prompt) {
         System.out.print(prompt);
         while (true) {
             String input = scanner.nextLine();
@@ -26,7 +20,7 @@ public class ConsoleUtils {
         }
     }
 
-    public java.sql.Date promptDate(String prompt) {
+    public static java.sql.Date promptDate(Scanner scanner, String prompt) {
         System.out.print(prompt);
         while (true) {
             String input = scanner.nextLine();
