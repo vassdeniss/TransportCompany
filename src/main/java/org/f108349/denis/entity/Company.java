@@ -1,10 +1,12 @@
 package org.f108349.denis.entity;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.*;
+import org.f108349.denis.entity.validation.Phone;
+import org.f108349.denis.entity.validation.RegistrationNumber;
 
 import java.util.UUID;
 
@@ -26,15 +28,20 @@ public class Company {
     @Column(columnDefinition = "CHAR(36)")
     private String id;
 
+    @Size(min = 3, max = 255, message = "Company name has to be between 3 and 255 characters.")
+    @Pattern(regexp = "^([A-Z]).*", message = "Company cannot be blank and has to start with a capital letter.")
     @Column(nullable = false)
     private String name;
-
+    
+    @RegistrationNumber
     @Column(name = "registration_no", nullable = false, unique = true)
     private String registrationNo;
 
+    @Email(message = "Please provide a valid email address.")
     @Column(nullable = false)
     private String email;
 
+    @Phone
     @Column
     private String phone;
 
