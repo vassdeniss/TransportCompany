@@ -14,7 +14,7 @@ public class EmployeeClassificationCc {
         handler.addOption("3", "Get All Classifications", () -> getAllEmployeeClassifications(dao));
         handler.addOption("4", "Delete Classification", () -> deleteEmployeeClassification(scanner, dao));
         handler.addOption("5", "Back", () -> { });
-        handler.run();\
+        handler.run();
     }
     
     private static void saveEmployeeClassification(Scanner scanner, EmployeeClassificationDao dao) {
