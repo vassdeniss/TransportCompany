@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.*;
+import org.f108349.denis.entity.validation.Phone;
 
 import java.util.UUID;
 
@@ -26,18 +28,26 @@ public class Customer {
     @Column(columnDefinition = "CHAR(36)")
     private String id;
 
+    @Size(max = 255, message = "First name cannot exceed 255 characters.")
+    @Pattern(regexp = "^([A-Z]).*", message = "First name hast to start with a capital letter.")
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
+    @Size(max = 255, message = "Last name cannot exceed 255 characters.")
+    @Pattern(regexp = "^([A-Z]).*", message = "Last name hast to start with a capital letter.")
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Email(message = "Please provide a valid email address.")
     @Column(nullable = false)
     private String email;
 
+    @Phone
     @Column
     private String phone;
 
+    @NotBlank(message = "Address cannot be blank.")
+    @Size(max = 255, message = "Address cannot exceed 255 characters.")
     @Column(nullable = false)
     private String address;
 
@@ -98,18 +108,5 @@ public class Customer {
 
     public void setDeleted(boolean deleted) {
         this.isDeleted = deleted;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer {" + 
-               "\n    id='" + id + '\'' + 
-               ",\n    firstName='" + firstName + '\'' + 
-               ",\n    lastName='" + lastName + '\'' + 
-               ",\n    email='" + email + '\'' + 
-               ",\n    phone='" + phone + '\'' + 
-               ",\n    address='" + address + '\'' + 
-               ",\n    isDeleted=" + isDeleted + 
-               "\n}";
     }
 }
