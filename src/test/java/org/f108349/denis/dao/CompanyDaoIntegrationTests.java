@@ -1,6 +1,7 @@
 package org.f108349.denis.dao;
 
 import org.f108349.denis.configuration.SessionContainerFactoryUtil;
+import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.CompanyDto;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,7 +26,7 @@ public class CompanyDaoIntegrationTests {
     
     @Container
     private static MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.0")
-            .withDatabaseName("testdb")
+            .withDatabaseName("testdb-company")
             .withUsername("user")
             .withPassword("password");
     
@@ -39,7 +40,7 @@ public class CompanyDaoIntegrationTests {
         hibernateProps.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         hibernateProps.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         
-        sessionFactory = SessionContainerFactoryUtil.getSessionFactory(hibernateProps);
+        sessionFactory = SessionFactoryUtil.getSessionFactory(hibernateProps);
     }
     
     @BeforeEach

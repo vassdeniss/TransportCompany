@@ -1,5 +1,6 @@
 package org.f108349.denis.ConsoleCommands;
 
+import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dao.CustomerDao;
 import org.f108349.denis.dto.CustomerDto;
 
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class CustomerCc {
     public static void run(Scanner scanner) {
-        CustomerDao dao = new CustomerDao();
+        CustomerDao dao = new CustomerDao(SessionFactoryUtil.getSessionFactory());
         MenuHandler handler = new MenuHandler(scanner);
         handler.addOption("1", "Save Customer", () -> saveCustomer(scanner, dao));
         handler.addOption("2", "Get Customer", () -> getCustomer(scanner, dao));
