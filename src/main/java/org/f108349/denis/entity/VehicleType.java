@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.UUID;
 
@@ -22,6 +24,8 @@ public class VehicleType {
     @Column(columnDefinition = "CHAR(36)")
     private String id;
 
+    @NotBlank(message = "Vehicle type cannot be blank.")
+    @Size(max = 255, message = "Vehicle type cannot exceed 255 characters.")
     @Column(name = "type_name", nullable = false, unique = true)
     private String typeName;
 

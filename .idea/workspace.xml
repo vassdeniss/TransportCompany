@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="?">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CustomerDaoIntegrationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CustomerDaoTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoIntegrationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/VehicleTypeEntityTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CustomerCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CustomerCc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleTypeCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleTypeCc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleTypeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleTypeDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/VehicleType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/VehicleType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/configuration/SessionFactoryUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/configuration/SessionFactoryUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/configuration/SessionContainerFactoryUtil.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CompanyDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CompanyDaoIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CustomerDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CustomerDaoIntegrationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +106,7 @@
     "Gradle.Tests in 'org.f108349.denis.dao'.executor": "Run",
     "Gradle.TransportCompany [:org.f108349.denis.Main.main()].executor": "Run",
     "Gradle.TransportCompany [build].executor": "Run",
+    "Gradle.VehicleTypeDaoTests.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
@@ -187,30 +190,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="CustomerEntityTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.f108349.denis.entity.CustomerEntityTests&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="Tests in 'TransportCompany.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -257,13 +236,37 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="VehicleTypeDaoTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.f108349.denis.dao.VehicleTypeDaoTests&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.Tests in 'TransportCompany.test'" />
+        <item itemvalue="Gradle.VehicleTypeDaoTests" />
         <item itemvalue="Gradle.CompanyDaoTests" />
         <item itemvalue="Gradle.Tests in 'org.f108349.denis.dao'" />
         <item itemvalue="Gradle.CompanyDaoIntegrationTests" />
-        <item itemvalue="Gradle.CustomerEntityTests" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +292,7 @@
       <workItem from="1732485351960" duration="144000" />
       <workItem from="1732485514972" duration="303000" />
       <workItem from="1732485831847" duration="71112000" />
-      <workItem from="1733654483951" duration="49967000" />
+      <workItem from="1733654483951" duration="56036000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />

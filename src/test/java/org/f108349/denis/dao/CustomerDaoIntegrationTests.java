@@ -1,6 +1,5 @@
 package org.f108349.denis.dao;
 
-import org.f108349.denis.configuration.SessionContainerFactoryUtil;
 import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.CustomerDto;
 import org.hibernate.Session;
