@@ -33,6 +33,9 @@ public class Main {
                     case "2":
                         CompanyCc.run(scanner);
                         break;
+                    case "3":
+                        EmployeeCc.run(scanner);
+                        break;
                     case "4":
                         EmployeeClassificationCc.run(scanner);
                         break;

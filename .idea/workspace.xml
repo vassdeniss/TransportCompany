@@ -5,25 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="?">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/validation/LicensePlate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/validation/LicensePlateValidator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoIntegrationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/EmployeeClassificationEntityTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/EntityHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/VehicleEntityTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/EmployeeClassificationDaoIntegrationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/EmployeeClassificationDaoTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/VehicleCc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/EmployeeClassificationCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/EmployeeClassificationCc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CustomerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleTypeDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/VehicleTypeDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/EmployeeClassificationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/EmployeeClassificationDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/CompanyEntityTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/CompanyEntityTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/CustomerEntityTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/CustomerEntityTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/VehicleTypeEntityTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/VehicleTypeEntityTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +99,8 @@
     "Gradle.CompanyDaoTests.whenEmailIsBlank_thenAssertConstraintViolations.executor": "Debug",
     "Gradle.CompanyEntityTests.executor": "Run",
     "Gradle.CustomerEntityTests.executor": "Run",
+    "Gradle.EmployeeClassificationDaoTests.executor": "Run",
+    "Gradle.EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable.executor": "Run",
     "Gradle.EmployeeClassificationEntityTests.executor": "Run",
     "Gradle.Tests in 'TransportCompany.test'.executor": "Run",
     "Gradle.Tests in 'org.f108349.denis.dao'.executor": "Run",
@@ -155,8 +147,8 @@
       <recent name="org.f108349.denis.ConsoleCommands" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.VehicleDaoIntegrationTests">
-    <configuration name="EmployeeClassificationEntityTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.EmployeeClassificationDaoTests">
+    <configuration name="EmployeeClassificationDaoTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -169,7 +161,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.f108349.denis.entity.EmployeeClassificationEntityTests&quot;" />
+            <option value="&quot;org.f108349.denis.dao.EmployeeClassificationDaoTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -180,7 +172,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Tests in 'TransportCompany.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -192,6 +184,8 @@
         <option name="taskNames">
           <list>
             <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.f108349.denis.dao.EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -276,11 +270,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.EmployeeClassificationDaoTests" />
+        <item itemvalue="Gradle.EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable" />
         <item itemvalue="Gradle.VehicleDaoIntegrationTests" />
         <item itemvalue="Gradle.VehicleDaoTests" />
         <item itemvalue="Gradle.VehicleEntityTests" />
-        <item itemvalue="Gradle.EmployeeClassificationEntityTests" />
-        <item itemvalue="Gradle.Tests in 'TransportCompany.test'" />
       </list>
     </recent_temporary>
   </component>
@@ -306,7 +300,7 @@
       <workItem from="1732485351960" duration="144000" />
       <workItem from="1732485514972" duration="303000" />
       <workItem from="1732485831847" duration="71112000" />
-      <workItem from="1733654483951" duration="63745000" />
+      <workItem from="1733654483951" duration="73404000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />
