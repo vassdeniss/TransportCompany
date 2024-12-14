@@ -80,9 +80,7 @@ public class VehicleDaoTests {
         VehicleDto dto = new VehicleDto("ValidModel", "CA1234PB", 50, companyId, vehicleTypeId);
 
         // Act
-        boolean saved = this.vehicleDao.saveVehicle(dto);
-        assertTrue(saved, "Vehicle should be saved successfully.");
-
+        this.vehicleDao.saveVehicle(dto);
         List<VehicleDto> vehicles = this.vehicleDao.getAllVehiclesWhereNotDeleted();
 
         // Assert

@@ -1,5 +1,6 @@
 package org.f108349.denis.ConsoleCommands;
 
+import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dao.EmployeeClassificationDao;
 import org.f108349.denis.dto.EmployeeClassificationDto;
 
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class EmployeeClassificationCc {
     public static void run(Scanner scanner) {
-        EmployeeClassificationDao dao = new EmployeeClassificationDao();
+        EmployeeClassificationDao dao = new EmployeeClassificationDao(SessionFactoryUtil.getSessionFactory());
         MenuHandler handler = new MenuHandler(scanner);
         handler.addOption("1", "Save Classification", () -> saveEmployeeClassification(scanner, dao));
         handler.addOption("2", "Get Classification", () -> getEmployeeClassification(scanner, dao));

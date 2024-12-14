@@ -1,23 +1,28 @@
 package org.f108349.denis.dao;
 
-import com.sun.source.tree.InstanceOfTree;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.EmployeeClassificationDto;
 import org.f108349.denis.entity.Employee;
 import org.f108349.denis.entity.EmployeeClassification;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
 public class EmployeeClassificationDao extends BaseDao<EmployeeClassificationDto, EmployeeClassification> {
+    private final SessionFactory sessionFactory;
+    
+    public EmployeeClassificationDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+    
     public void saveEmployeeClassification(EmployeeClassificationDto employeeClassificationDto) {
         EmployeeClassification employeeClassification = 
                 new EmployeeClassification(employeeClassificationDto.getClassificationName());
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             session.persist(employeeClassification);
             tx.commit();
@@ -26,7 +31,7 @@ public class EmployeeClassificationDao extends BaseDao<EmployeeClassificationDto
     
     public EmployeeClassificationDto getEmployeeClassificationByIdWhereNotDeleted(String id) {
         EmployeeClassificationDto employeeClassification;
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             employeeClassification = this.getByIdWhereNotDeleted(session, id, EmployeeClassificationDto.class, EmployeeClassification.class);          
             tx.commit();
@@ -37,7 +42,7 @@ public class EmployeeClassificationDao extends BaseDao<EmployeeClassificationDto
     
     public List<EmployeeClassificationDto> getAllEmployeeClassificationsWhereNotDeleted() {
         List<EmployeeClassificationDto> employeeClassifications;
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             employeeClassifications = this.getAllWhereNotDeleted(session, EmployeeClassificationDto.class, EmployeeClassification.class);
             tx.commit();
@@ -47,7 +52,7 @@ public class EmployeeClassificationDao extends BaseDao<EmployeeClassificationDto
     }
     
     public void deleteEmployeeClassification(String id) {
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             EmployeeClassification employeeClassification = session.get(EmployeeClassification.class, id);
 

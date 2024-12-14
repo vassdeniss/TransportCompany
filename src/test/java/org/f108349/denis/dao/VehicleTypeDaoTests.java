@@ -113,9 +113,9 @@ public class VehicleTypeDaoTests {
         }
 
         // Act & Assert
-        Exception exception = assertThrows(IllegalStateException.class, () -> {
-            this.vehicleTypeDao.deleteVehicleType(vehicleTypeId);
-        });
+        IllegalStateException exception = assertThrows(IllegalStateException.class, () -> 
+                this.vehicleTypeDao.deleteVehicleType(vehicleTypeId)
+        );
 
         String expectedMessage = "Cannot delete vehicle type; vehicles are still assigned.";
         assertEquals(expectedMessage, exception.getMessage());
