@@ -1,6 +1,5 @@
 package org.f108349.denis.dao;
 
-import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.CustomerDto;
 import org.f108349.denis.entity.Customer;
 import org.hibernate.Session;
@@ -19,7 +18,7 @@ public class CustomerDao extends BaseDao<CustomerDto, Customer> {
     public void saveCustomer(CustomerDto customerDto) {
         Customer customer = new Customer(customerDto.getFirstName(), customerDto.getLastName(), 
                 customerDto.getEmail(), customerDto.getPhone(), customerDto.getAddress());
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             session.persist(customer);
             tx.commit();
@@ -28,7 +27,7 @@ public class CustomerDao extends BaseDao<CustomerDto, Customer> {
     
     public CustomerDto getCustomerByIdWhereNotDeleted(String id) {
         CustomerDto customer;
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             customer = this.getByIdWhereNotDeleted(session, id, CustomerDto.class, Customer.class);
             tx.commit();
@@ -39,7 +38,7 @@ public class CustomerDao extends BaseDao<CustomerDto, Customer> {
     
     public List<CustomerDto> getAllCustomersWhereNotDeleted() {
         List<CustomerDto> customers;
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             customers = this.getAllWhereNotDeleted(session, CustomerDto.class, Customer.class);
             tx.commit();
@@ -49,7 +48,7 @@ public class CustomerDao extends BaseDao<CustomerDto, Customer> {
     }
     
     public void updateCustomer(CustomerDto customerDto) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             Customer customer = session.get(Customer.class, customerDto.getId());
             
@@ -65,7 +64,7 @@ public class CustomerDao extends BaseDao<CustomerDto, Customer> {
     }
     
     public void deleteCustomer(String id) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             Customer customer = session.get(Customer.class, id);
             customer.setDeleted(true);

@@ -1,6 +1,8 @@
 package org.f108349.denis.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import org.f108349.denis.entity.validation.LicensePlate;
 
 import java.util.UUID;
 
@@ -20,12 +22,17 @@ public class Vehicle {
     @Column(columnDefinition = "CHAR(36)")
     private String id;
     
+    @NotBlank(message = "Model cannot be blank.")
+    @Size(max = 255, message = "Model cannot exceed 255 characters.")
     @Column(nullable = false)
     private String model;
 
+    @LicensePlate
     @Column(name = "license_plate", nullable = false, unique = true)
     private String licensePlate;
 
+    @Min(value = 1, message = "Capacity must be at least 1.")
+    @Max(value = 999, message = "Capacity cannot exceed 999.")
     @Column(nullable = false)
     private int capacity;
 

@@ -1,18 +1,24 @@
 package org.f108349.denis.dao;
 
-import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.VehicleDto;
 import org.f108349.denis.entity.Company;
 import org.f108349.denis.entity.Vehicle;
 import org.f108349.denis.entity.VehicleType;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
 public class VehicleDao extends BaseDao<VehicleDto, Vehicle> {
+    private final SessionFactory sessionFactory;
+    
+    public VehicleDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+    
     public boolean saveVehicle(VehicleDto vehicleDto) {
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             
             VehicleType vehicleType = session
@@ -48,7 +54,7 @@ public class VehicleDao extends BaseDao<VehicleDto, Vehicle> {
     
     public VehicleDto getVehicleByIdWhereNotDeleted(String id) {
         VehicleDto vehicle;
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             vehicle = this.getByIdWhereNotDeleted(session, id, VehicleDto.class, Vehicle.class);
             tx.commit();
@@ -59,7 +65,7 @@ public class VehicleDao extends BaseDao<VehicleDto, Vehicle> {
     
     public List<VehicleDto> getAllVehiclesWhereNotDeleted() {
         List<VehicleDto> vehicles;
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             vehicles = this.getAllWhereNotDeleted(session, VehicleDto.class, Vehicle.class);
             tx.commit();
@@ -69,7 +75,7 @@ public class VehicleDao extends BaseDao<VehicleDto, Vehicle> {
     }
     
     public void updateVehicle(VehicleDto vehicleDto) {
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             Vehicle vehicle = session.get(Vehicle.class, vehicleDto.getId());
             
@@ -85,7 +91,7 @@ public class VehicleDao extends BaseDao<VehicleDto, Vehicle> {
     }
     
     public void deleteVehicle(String id) {
-        try (Session session = SessionFactoryUtil.getSessionFactory().openSession()) {
+        try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             Vehicle vehicle = session.get(Vehicle.class, id);
             vehicle.setDeleted(true);

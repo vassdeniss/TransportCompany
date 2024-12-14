@@ -1,13 +1,8 @@
 package org.f108349.denis.entity;
 
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +13,7 @@ public class VehicleTypeEntityTests {
         VehicleType vehicleType = new VehicleType("  ");
 
         // Act
-        List<String> messages = validate(vehicleType);
+        List<String> messages = EntityHelper.validate(vehicleType);
 
         // Assert
         assertEquals(1, messages.size());
@@ -31,7 +26,7 @@ public class VehicleTypeEntityTests {
         VehicleType vehicleType = new VehicleType("A".repeat(256));
 
         // Act
-        List<String> messages = validate(vehicleType);
+        List<String> messages = EntityHelper.validate(vehicleType);
 
         // Assert
         assertEquals(1, messages.size());
@@ -44,18 +39,9 @@ public class VehicleTypeEntityTests {
         VehicleType vehicleType = new VehicleType("Car");
 
         // Act
-        List<String> messages = validate(vehicleType);
+        List<String> messages = EntityHelper.validate(vehicleType);
 
         // Assert
         assertTrue(messages.isEmpty(), "No constraint violations should occur for a valid VehicleType.");
-    }
-
-    private List<String> validate(VehicleType vehicleType) {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-        return validator.validate(vehicleType)
-                .stream()
-                .map(ConstraintViolation::getMessage)
-                .collect(Collectors.toList());
     }
 }

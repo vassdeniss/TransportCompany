@@ -1,5 +1,6 @@
 package org.f108349.denis.ConsoleCommands;
 
+import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dao.VehicleDao;
 import org.f108349.denis.dto.VehicleDto;
 
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 public class VehicleCc {
     public static void run(Scanner scanner) {
-        VehicleDao dao = new VehicleDao();
+        VehicleDao dao = new VehicleDao(SessionFactoryUtil.getSessionFactory());
         MenuHandler handler = new MenuHandler(scanner);
         handler.addOption("1", "Save Vehicle", () -> saveVehicle(scanner, dao));
         handler.addOption("2", "Get Vehicle", () -> getVehicle(scanner, dao));

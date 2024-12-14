@@ -1,13 +1,8 @@
 package org.f108349.denis.entity;
 
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.Validator;
-import jakarta.validation.ValidatorFactory;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,7 +14,7 @@ public class CompanyEntityTests {
                 "someMail@mail.bg", "+359 88 1842866");
 
         // Act
-        List<String> messages = this.validate(company);
+        List<String> messages = EntityHelper.validate(company);
 
         // Assert
         assertEquals(1, messages.size());
@@ -33,7 +28,7 @@ public class CompanyEntityTests {
                 "someMail@mail.bg", "+359 88 1842866");
 
         // Act
-        List<String> messages = this.validate(company);
+        List<String> messages = EntityHelper.validate(company);
 
         // Assert
         assertEquals(1, messages.size());
@@ -47,7 +42,7 @@ public class CompanyEntityTests {
                 "someMail@mail.bg", "+359 88 1842866");
 
         // Act
-        List<String> messages = this.validate(company);
+        List<String> messages = EntityHelper.validate(company);
         
         // Assert
         assertEquals(1, messages.size());
@@ -61,7 +56,7 @@ public class CompanyEntityTests {
                 "someMail@mail.bg", "+359 88 1842866");
 
         // Act
-        List<String> messages = this.validate(company);
+        List<String> messages = EntityHelper.validate(company);
 
         // Assert
         assertEquals(1, messages.size());
@@ -75,7 +70,7 @@ public class CompanyEntityTests {
                 "invalid-email", "+359 88 1842866");
 
         // Act
-        List<String> messages = this.validate(company);
+        List<String> messages = EntityHelper.validate(company);
 
         // Assert
         assertEquals(1, messages.size());
@@ -89,7 +84,7 @@ public class CompanyEntityTests {
                 "someMail@mail.bg", "+123 456 789");
 
         // ACt
-        List<String> messages = this.validate(company);
+        List<String> messages = EntityHelper.validate(company);
 
         // Assert
         assertEquals(1, messages.size());
@@ -103,18 +98,9 @@ public class CompanyEntityTests {
                 "someMail@mail.bg", "+359 88 1842866");
 
         // Act
-        List<String> messages = this.validate(company);
+        List<String> messages = EntityHelper.validate(company);
 
         // Assert
         assertTrue(messages.isEmpty());
-    }
-    
-    private List<String> validate(Company company) {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        Validator validator = factory.getValidator();
-        return validator.validate(company)
-                .stream()
-                .map(ConstraintViolation::getMessage)
-                .collect(Collectors.toList());
     }
 }
