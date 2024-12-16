@@ -24,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class VehicleDaoIntegrationTests {
     private static SessionFactory sessionFactory;
     private VehicleDao vehicleDao;
+    private VehicleDto vehicleDto;
 
     @Container
     private static MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.0")
@@ -52,16 +53,19 @@ public class VehicleDaoIntegrationTests {
             session.createMutationQuery("DELETE FROM Vehicle").executeUpdate();
             session.createMutationQuery("DELETE FROM Company").executeUpdate();
             session.createMutationQuery("DELETE FROM VehicleType").executeUpdate();
-            tx.commit();
 
-            tx = session.beginTransaction();
             Company company = new Company("Test", "123456789", 
                     "testemail@gmail.com", "+359 88 2221111");
+            String companyId = company.getId();
             session.persist(company);
 
             VehicleType vehicleType = new VehicleType("big");
+            String vehicleTypeId = vehicleType.getId();
             session.persist(vehicleType);
             tx.commit();
+            
+            this.vehicleDto = new VehicleDto("ValidModel", "CA1234PB",
+                    50, companyId, vehicleTypeId);
         }
         
         this.vehicleDao = new VehicleDao(sessionFactory);
@@ -77,20 +81,9 @@ public class VehicleDaoIntegrationTests {
     @Test
     public void testVehicleDao_whenVehicleSaved_thenShouldBeAbleToRetrieveIt() {
         // Arrange
-        String companyId, vehicleTypeId;
-        try (Session session = sessionFactory.openSession()) {
-            companyId = session.createQuery("SELECT c.id FROM Company c WHERE c.isDeleted = false", String.class)
-                    .setMaxResults(1)
-                    .uniqueResult();
-            vehicleTypeId = session.createQuery("SELECT vt.id FROM VehicleType vt WHERE vt.isDeleted = false", String.class)
-                    .setMaxResults(1)
-                    .uniqueResult();
-        }
-
-        VehicleDto dto = new VehicleDto("ValidModel", "CA1234PB", 50, companyId, vehicleTypeId);
 
         // Act
-        boolean saved = this.vehicleDao.saveVehicle(dto);
+        boolean saved = this.vehicleDao.saveVehicle(this.vehicleDto);
         assertTrue(saved, "Vehicle should be saved successfully.");
 
         List<VehicleDto> vehicles = this.vehicleDao.getAllVehiclesWhereNotDeleted();
@@ -106,18 +99,7 @@ public class VehicleDaoIntegrationTests {
     @Test
     public void testVehicleDao_whenVehicleUpdated_thenChangesShouldPersist() {
         // Arrange
-        String companyId, vehicleTypeId;
-        try (Session session = sessionFactory.openSession()) {
-            companyId = session.createQuery("SELECT c.id FROM Company c WHERE c.isDeleted = false", String.class)
-                    .setMaxResults(1)
-                    .uniqueResult();
-            vehicleTypeId = session.createQuery("SELECT vt.id FROM VehicleType vt WHERE vt.isDeleted = false", String.class)
-                    .setMaxResults(1)
-                    .uniqueResult();
-        }
-        
-        VehicleDto dto = new VehicleDto("InitialModel", "CA1111CA", 10, companyId, vehicleTypeId);
-        this.vehicleDao.saveVehicle(dto);
+        this.vehicleDao.saveVehicle(this.vehicleDto);
         
         VehicleDto saved = this.vehicleDao.getAllVehiclesWhereNotDeleted().getFirst();
         String vehicleId = saved.getId();
@@ -139,18 +121,7 @@ public class VehicleDaoIntegrationTests {
     @Test
     public void testVehicleDao_whenVehicleDeleted_thenShouldNotBeRetrievable() {
         // Arrange
-        String companyId, vehicleTypeId;
-        try (Session session = sessionFactory.openSession()) {
-            companyId = session.createQuery("SELECT c.id FROM Company c WHERE c.isDeleted = false", String.class)
-                    .setMaxResults(1)
-                    .uniqueResult();
-            vehicleTypeId = session.createQuery("SELECT vt.id FROM VehicleType vt WHERE vt.isDeleted = false", String.class)
-                    .setMaxResults(1)
-                    .uniqueResult();
-        }
-        
-        VehicleDto dto = new VehicleDto("InitialModel", "CA1111CA", 10, companyId, vehicleTypeId);
-        this.vehicleDao.saveVehicle(dto);
+        this.vehicleDao.saveVehicle(this.vehicleDto);
         
         VehicleDto saved = this.vehicleDao.getAllVehiclesWhereNotDeleted().getFirst();
         String vehicleId = saved.getId();

@@ -1,6 +1,11 @@
 package org.f108349.denis.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.f108349.denis.entity.validation.Phone;
 
 import java.util.UUID;
 
@@ -24,18 +29,25 @@ public class Employee {
     @Column(columnDefinition = "CHAR(36)")
     private String id;
 
+    @Size(max = 255, message = "First name cannot exceed 255 characters.")
+    @Pattern(regexp = "^([A-Z]).*", message = "First name hast to start with a capital letter.")
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
+    @Size(max = 255, message = "Last name cannot exceed 255 characters.")
+    @Pattern(regexp = "^([A-Z]).*", message = "Last name hast to start with a capital letter.")
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Email(message = "Please provide a valid email address.")
     @Column(nullable = false)
     private String email;
 
+    @Phone
     @Column
     private String phone;
 
+    @PastOrPresent(message = "Hire date cannot be in the future.")
     @Column(name = "hire_date")
     private java.sql.Date hireDate;
 

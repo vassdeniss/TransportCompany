@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="?">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/EmployeeClassificationCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/EmployeeClassificationCc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/EmployeeClassificationDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/EmployeeClassificationDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/EmployeeDaoIntegrationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/EmployeeDaoTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/EmployeeEntityTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,9 +97,14 @@
     "Gradle.CompanyDaoTests.whenEmailIsBlank_thenAssertConstraintViolations.executor": "Debug",
     "Gradle.CompanyEntityTests.executor": "Run",
     "Gradle.CustomerEntityTests.executor": "Run",
+    "Gradle.EmployeeClassificationDaoIntegrationTests.executor": "Run",
     "Gradle.EmployeeClassificationDaoTests.executor": "Run",
     "Gradle.EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable.executor": "Run",
     "Gradle.EmployeeClassificationEntityTests.executor": "Run",
+    "Gradle.EmployeeDaoTests.executor": "Run",
+    "Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeSaved_thenShouldBeAbleToRetrieveIt.executor": "Run",
+    "Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeUpdated_thenChangesShouldPersist.executor": "Run",
+    "Gradle.EmployeeEntityTests.executor": "Run",
     "Gradle.Tests in 'TransportCompany.test'.executor": "Run",
     "Gradle.Tests in 'org.f108349.denis.dao'.executor": "Run",
     "Gradle.TransportCompany [:org.f108349.denis.Main.main()].executor": "Run",
@@ -142,8 +150,8 @@
       <recent name="org.f108349.denis.ConsoleCommands" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.EmployeeClassificationDaoIntegrationTests">
-    <configuration name="EmployeeClassificationDaoIntegrationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.EmployeeDaoIntegrationTests">
+    <configuration name="EmployeeDaoIntegrationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -156,7 +164,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.f108349.denis.dao.EmployeeClassificationDaoIntegrationTests&quot;" />
+            <option value="&quot;org.f108349.denis.dao.EmployeeDaoIntegrationTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -167,7 +175,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="EmployeeClassificationDaoTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="EmployeeDaoTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -180,7 +188,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.f108349.denis.dao.EmployeeClassificationDaoTests&quot;" />
+            <option value="&quot;org.f108349.denis.dao.EmployeeDaoTests&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -191,7 +199,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="EmployeeDaoTests.testEmployeeDao_whenEmployeeUpdated_thenChangesShouldPersist" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -204,7 +212,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.f108349.denis.dao.EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable&quot;" />
+            <option value="&quot;org.f108349.denis.dao.EmployeeDaoTests.testEmployeeDao_whenEmployeeUpdated_thenChangesShouldPersist&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -265,10 +273,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.EmployeeClassificationDaoIntegrationTests" />
-        <item itemvalue="Gradle.EmployeeClassificationDaoTests" />
-        <item itemvalue="Gradle.EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable" />
+        <item itemvalue="Gradle.EmployeeDaoIntegrationTests" />
+        <item itemvalue="Gradle.EmployeeDaoTests" />
         <item itemvalue="Gradle.VehicleDaoIntegrationTests" />
+        <item itemvalue="Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeUpdated_thenChangesShouldPersist" />
         <item itemvalue="Gradle.VehicleDaoTests" />
       </list>
     </recent_temporary>
@@ -295,7 +303,7 @@
       <workItem from="1732485351960" duration="144000" />
       <workItem from="1732485514972" duration="303000" />
       <workItem from="1732485831847" duration="71112000" />
-      <workItem from="1733654483951" duration="74476000" />
+      <workItem from="1733654483951" duration="87700000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />
