@@ -17,14 +17,15 @@ public class Order {
     public Order() {}
 
     public Order(Date orderDate, Date shipmentDate, String destination, 
-                 BigDecimal totalCost, BigDecimal totalWeight) {
+                 BigDecimal totalCost, BigDecimal totalWeight, Status status) {
         this.id = UUID.randomUUID().toString();
         this.orderDate = orderDate;
         this.shipmentDate = shipmentDate;
         this.destination = destination;
         this.totalCost = totalCost;
         this.totalWeight = totalWeight;
-        this.status = Status.PENDING;
+        this.status = status == null ? Status.PENDING : status;
+        this.isDeleted = false;
     }
 
     @Id

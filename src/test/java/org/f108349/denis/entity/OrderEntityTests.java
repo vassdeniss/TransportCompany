@@ -14,7 +14,7 @@ public class OrderEntityTests {
     public void testOrderDate_whenNull_shouldReturnConstraintViolations() {
         // Arrange
         Order order = new Order(null, Date.valueOf("2024-12-16"), "Some destination", 
-                BigDecimal.valueOf(100), BigDecimal.valueOf(10));
+                BigDecimal.valueOf(100), BigDecimal.valueOf(10), null);
 
         // Act
         List<String> messages = EntityHelper.validate(order);
@@ -28,7 +28,7 @@ public class OrderEntityTests {
     public void testDestination_whenReceedsMinLength_shouldReturnConstraintViolations() {
         // Arrange
         Order order = new Order(Date.valueOf("2024-12-16"), Date.valueOf("2024-12-18"), "aa", 
-                BigDecimal.valueOf(100), BigDecimal.valueOf(10));
+                BigDecimal.valueOf(100), BigDecimal.valueOf(10), null);
 
         // Act
         List<String> messages = EntityHelper.validate(order);
@@ -42,7 +42,7 @@ public class OrderEntityTests {
     public void testDestination_whenExceedsMaxLength_shouldReturnConstraintViolations() {
         // Arrange
         Order order = new Order(Date.valueOf("2024-12-16"), Date.valueOf("2024-12-18"), "a".repeat(256), 
-                BigDecimal.valueOf(100), BigDecimal.valueOf(10));
+                BigDecimal.valueOf(100), BigDecimal.valueOf(10), null);
 
         // Act
         List<String> messages = EntityHelper.validate(order);
@@ -56,7 +56,7 @@ public class OrderEntityTests {
     public void testTotalCost_whenNull_shouldReturnConstraintViolations() {
         // Arrange
         Order order = new Order(Date.valueOf("2024-12-16"), Date.valueOf("2024-12-18"), "Some destination", 
-                null, BigDecimal.valueOf(10));
+                null, BigDecimal.valueOf(10), null);
 
         // Act
         List<String> messages = EntityHelper.validate(order);
@@ -70,7 +70,7 @@ public class OrderEntityTests {
     public void testTotalCost_whenZero_shouldReturnConstraintViolations() {
         // Arrange
         Order order = new Order(Date.valueOf("2024-12-16"), Date.valueOf("2024-12-18"), "Some destination", 
-                BigDecimal.valueOf(0), BigDecimal.valueOf(10));
+                BigDecimal.valueOf(0), BigDecimal.valueOf(10), null);
 
         // Act
         List<String> messages = EntityHelper.validate(order);
@@ -84,7 +84,7 @@ public class OrderEntityTests {
     public void testTotalWeight_whenNull_shouldReturnConstraintViolations() {
         // Arrange
         Order order = new Order(Date.valueOf("2024-12-16"), Date.valueOf("2024-12-18"), "Some destination", 
-                BigDecimal.valueOf(15), null);
+                BigDecimal.valueOf(15), null, null);
 
         // Act
         List<String> messages = EntityHelper.validate(order);
@@ -98,7 +98,7 @@ public class OrderEntityTests {
     public void testTotalWeight_whenZero_shouldReturnConstraintViolations() {
         // Arrange
         Order order = new Order(Date.valueOf("2024-12-16"), Date.valueOf("2024-12-18"), "Some destination", 
-                BigDecimal.valueOf(10), BigDecimal.valueOf(0));
+                BigDecimal.valueOf(10), BigDecimal.valueOf(0), null);
 
         // Act
         List<String> messages = EntityHelper.validate(order);
@@ -112,7 +112,7 @@ public class OrderEntityTests {
     public void testOrder_whenValid_shouldNotReturnConstraintViolations() {
         // Arrange
         Order order = new Order(Date.valueOf("2024-12-16"), Date.valueOf("2024-12-18"), "Some destination", 
-                BigDecimal.valueOf(100), BigDecimal.valueOf(10));
+                BigDecimal.valueOf(100), BigDecimal.valueOf(10), null);
 
         // Act
         List<String> messages = EntityHelper.validate(order);

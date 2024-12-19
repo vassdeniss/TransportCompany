@@ -53,8 +53,7 @@ public class VehicleDaoTests {
             session.persist(vehicleType);
             tx.commit();
             
-            this.vehicleDto = new VehicleDto("ValidModel", "CA1234PB",
-                    50, companyId, vehicleTypeId);
+            this.vehicleDto = new VehicleDto("ValidModel", "CA1234PB", 50, companyId, vehicleTypeId);
         }
         
         this.vehicleDao = new VehicleDao(sessionFactory);

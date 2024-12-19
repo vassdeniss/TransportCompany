@@ -16,6 +16,7 @@ public class Vehicle {
         this.model = model;
         this.licensePlate = licensePlate;
         this.capacity = capacity;
+        this.isDeleted = false;
     }
     
     @Id

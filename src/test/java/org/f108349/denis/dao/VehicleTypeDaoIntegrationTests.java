@@ -114,7 +114,7 @@ public class VehicleTypeDaoIntegrationTests {
             Transaction tx = session.beginTransaction();
             VehicleType vehicleType = session.get(VehicleType.class, vehicleTypeId);
             Company company = new Company("Test", "123456789", "testmail@mail.com", "+359882813211");
-            Vehicle vehicle = new Vehicle("TestVehicle", "123456", 20);
+            Vehicle vehicle = new Vehicle("TestVehicle", "BG1234FF", 20);
             vehicle.setVehicleType(vehicleType);
             vehicle.setCompany(company);
             session.persist(company);
