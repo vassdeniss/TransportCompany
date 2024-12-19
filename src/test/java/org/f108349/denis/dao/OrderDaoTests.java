@@ -80,7 +80,7 @@ public class OrderDaoTests {
 
             tx.commit();
             
-            this.orderDto = new OrderDto(Date.valueOf(LocalDate.now()), null, "somedest", 
+            this.orderDto = new OrderDto("brick", Date.valueOf(LocalDate.now()), null, "somedest", 
                     new BigDecimal("1500.00"), new BigDecimal("17.00"), customerId, employeeId, companyId, vehicleId,
                     null);
         }
@@ -106,6 +106,7 @@ public class OrderDaoTests {
         // Assert
         assertEquals(1, orders.size(), "Should have one order after saving.");
         OrderDto retrieved = orders.getFirst();
+        assertEquals(this.orderDto.getItem(), retrieved.getItem());
         assertEquals(this.orderDto.getOrderDate(), retrieved.getOrderDate());
         assertNull(retrieved.getShipmentDate());
         assertEquals(this.orderDto.getDestination(), retrieved.getDestination());
@@ -123,6 +124,7 @@ public class OrderDaoTests {
         String orderId = saved.getId();
 
         // Act
+        saved.setItem("bricks2");
         saved.setOrderDate(Date.valueOf(LocalDate.now().plusDays(2)));
         saved.setShipmentDate(Date.valueOf(LocalDate.now().plusDays(5)));
         saved.setDestination("newdest");
@@ -134,6 +136,7 @@ public class OrderDaoTests {
         OrderDto updated = this.orderDao.getOrderByIdWhereNotDeleted(orderId);
 
         // Assert
+        assertEquals(saved.getItem(), updated.getItem());
         assertEquals(saved.getOrderDate(), updated.getOrderDate());
         assertEquals(saved.getShipmentDate(), updated.getShipmentDate());
         assertEquals(saved.getDestination(), updated.getDestination());

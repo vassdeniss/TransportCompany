@@ -12,6 +12,7 @@ import java.sql.Date;
 
 public class OrderDto {
     private String id;
+    private String item;
     private Date orderDate;
     private Date shipmentDate;
     private String destination;
@@ -27,9 +28,10 @@ public class OrderDto {
     private Company company;
     private Vehicle vehicle;
 
-    public OrderDto(Date orderDate, Date shipmentDate, String destination,
+    public OrderDto(String item, Date orderDate, Date shipmentDate, String destination,
                     BigDecimal totalCost, BigDecimal totalWeight, 
                     String customerId, String employeeId, String companyId, String vehicleId, Status status) {
+        this.item = item;
         this.orderDate = orderDate;
         this.shipmentDate = shipmentDate;
         this.destination = destination;
@@ -44,6 +46,7 @@ public class OrderDto {
 
     public OrderDto(Order order) {
         this.id = order.getId();
+        this.item = order.getItem();
         this.orderDate = order.getOrderDate();
         this.shipmentDate = order.getShipmentDate();
         this.destination = order.getDestination();
@@ -64,6 +67,14 @@ public class OrderDto {
         return this.id;
     }
 
+    public String getItem() {
+        return this.item;
+    }
+    
+    public void setItem(String item) {
+        this.item = item;
+    }
+    
     public Date getOrderDate() {
         return this.orderDate;
     }
@@ -179,6 +190,7 @@ public class OrderDto {
     @Override
     public String toString() {
         return "Order Details: " +
+                "\n    Item: " + this.item +
                 "\n    Order Date: " + this.orderDate +
                 "\n    Shipment Date: " + this.shipmentDate +
                 "\n    Destination: " + this.destination +

@@ -16,9 +16,10 @@ import java.util.UUID;
 public class Order {
     public Order() {}
 
-    public Order(Date orderDate, Date shipmentDate, String destination, 
+    public Order(String item, Date orderDate, Date shipmentDate, String destination, 
                  BigDecimal totalCost, BigDecimal totalWeight, Status status) {
         this.id = UUID.randomUUID().toString();
+        this.item = item;
         this.orderDate = orderDate;
         this.shipmentDate = shipmentDate;
         this.destination = destination;
@@ -31,6 +32,11 @@ public class Order {
     @Id
     @Column(columnDefinition = "CHAR(36)")
     private String id;
+    
+    @NotNull
+    @Size(min = 3, max = 255, message = "Item must be between 3 and 255 characters.")
+    @Column(name = "item", nullable = false)
+    private String item; 
     
     @NotNull(message = "Order date cannot be null.")
     @Column(name = "order_date", nullable = false)
@@ -86,6 +92,14 @@ public class Order {
         this.id = id;
     }
 
+    public String getItem() {
+        return this.item;
+    }
+    
+    public void setItem(String item) {
+        this.item = item;
+    }
+    
     public Date getOrderDate() {
         return orderDate;
     }

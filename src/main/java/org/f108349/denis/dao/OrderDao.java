@@ -63,7 +63,7 @@ public class OrderDao extends BaseDao<OrderDto, Order> {
                 return;
             }
             
-            Order order = new Order(orderDto.getOrderDate(), orderDto.getShipmentDate(), orderDto.getDestination(),
+            Order order = new Order(orderDto.getItem(), orderDto.getOrderDate(), orderDto.getShipmentDate(), orderDto.getDestination(),
                 orderDto.getTotalCost(), orderDto.getTotalWeight(), null);
             order.setCustomer(customer);
             order.setEmployee(employee);
@@ -102,6 +102,7 @@ public class OrderDao extends BaseDao<OrderDto, Order> {
             Transaction tx = session.beginTransaction();
             Order order = session.get(Order.class, orderDto.getId());
             
+            order.setItem(orderDto.getItem());
             order.setOrderDate(orderDto.getOrderDate());
             order.setShipmentDate(orderDto.getShipmentDate());
             order.setDestination(orderDto.getDestination());

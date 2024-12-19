@@ -24,6 +24,7 @@ public class OrderCc {
     
     private static void saveOrder(Scanner scanner, OrderDao dao) {
         System.out.println("\n--- Save Order ---");
+        String item = ConsoleUtils.promptString(scanner, "Enter item being shipped: ");
         Date orderDate = ConsoleUtils.promptDate(scanner, "Enter order date:");
         Date shipmentDate = ConsoleUtils.promptDate(scanner, "Enter shipment date:");
         String destination = ConsoleUtils.promptString(scanner, "Enter destination: ");
@@ -34,7 +35,7 @@ public class OrderCc {
         String companyId = ConsoleUtils.promptString(scanner, "Enter company ID: ");
         String vehicleId = ConsoleUtils.promptString(scanner, "Enter vehicle ID: ");
 
-        OrderDto order = new OrderDto(orderDate, shipmentDate, destination, new BigDecimal(totalCost), 
+        OrderDto order = new OrderDto(item, orderDate, shipmentDate, destination, new BigDecimal(totalCost), 
                 new BigDecimal(totalWeight), customerId, employeeId, companyId, vehicleId, null);
         dao.saveOrder(order);
         System.out.println("Order saved successfully.");
@@ -71,23 +72,27 @@ public class OrderCc {
         System.out.println("Which field do you want to update?");
         
         MenuHandler menuHandler = new MenuHandler(scanner);
-        menuHandler.addOption("1", "Shipment Date", () -> {
+        menuHandler.addOption("1", "Item", () -> {
+            System.out.println("Current item: " + order.getItem());
+            order.setItem(ConsoleUtils.promptString(scanner, "Enter new item: "));
+        });
+        menuHandler.addOption("2", "Shipment Date", () -> {
             System.out.println("Current date: " + order.getShipmentDate());
             order.setShipmentDate(ConsoleUtils.promptDate(scanner, "Enter new date: "));
         });
-        menuHandler.addOption("2", "Destination", () -> {
+        menuHandler.addOption("3", "Destination", () -> {
             System.out.println("Current destination: " + order.getDestination());
             order.setDestination(ConsoleUtils.promptString(scanner, "Enter new destination: "));
         });
-        menuHandler.addOption("3", "Cost", () -> {
+        menuHandler.addOption("4", "Cost", () -> {
             System.out.println("Current cost: " + order.getTotalCost());
             order.setTotalCost(new BigDecimal(ConsoleUtils.promptInt(scanner, "Enter new cost: ")));
         });
-        menuHandler.addOption("4", "Weight", () -> {
+        menuHandler.addOption("5", "Weight", () -> {
             System.out.println("Current weight: " + order.getTotalWeight());
             order.setTotalWeight(new BigDecimal(ConsoleUtils.promptInt(scanner, "Enter new weight: ")));
         });
-        menuHandler.addOption("5", "Status", () -> {
+        menuHandler.addOption("6", "Status", () -> {
             System.out.println("Current status: " + order.getStatus());
             order.setStatus(Status.valueOf(ConsoleUtils.promptString(scanner, "Enter new status: ")));
         });
