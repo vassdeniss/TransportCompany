@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="?">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/OrderDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/OrderDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/OrderDaoIntegrationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/OrderDaoTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/OrderCc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/OrderEntityTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/OrderEntityTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,62 +80,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build TransportCompany.executor": "Run",
-    "Gradle.CompanyDaoIntegrationTests.executor": "Run",
-    "Gradle.CompanyDaoTests.executor": "Run",
-    "Gradle.CompanyDaoTests.testCompanyDao_whenCompanyDeleted_thenShouldNotBeRetrievable.executor": "Run",
-    "Gradle.CompanyDaoTests.testCompanyDao_whenCompanyUpdated_thenChangesShouldPersist.executor": "Run",
-    "Gradle.CompanyDaoTests.whenCompanyNameIsBlank_thenAssertConstraintViolations.executor": "Debug",
-    "Gradle.CompanyDaoTests.whenCompanyNameSubceedsMinLength_thenAssertConstraintViolations.executor": "Debug",
-    "Gradle.CompanyDaoTests.whenEmailIsBlank_thenAssertConstraintViolations.executor": "Debug",
-    "Gradle.CompanyEntityTests.executor": "Run",
-    "Gradle.CustomerEntityTests.executor": "Run",
-    "Gradle.EmployeeClassificationDaoIntegrationTests.executor": "Run",
-    "Gradle.EmployeeClassificationDaoTests.executor": "Run",
-    "Gradle.EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable.executor": "Run",
-    "Gradle.EmployeeClassificationEntityTests.executor": "Run",
-    "Gradle.EmployeeDaoIntegrationTests.executor": "Run",
-    "Gradle.EmployeeDaoTests.executor": "Run",
-    "Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeSaved_thenShouldBeAbleToRetrieveIt.executor": "Run",
-    "Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeUpdated_thenChangesShouldPersist.executor": "Run",
-    "Gradle.EmployeeEntityTests.executor": "Run",
-    "Gradle.OrderDaoIntegrationTests.executor": "Run",
-    "Gradle.OrderDaoTests.executor": "Run",
-    "Gradle.OrderDaoTests.testOrderDao_whenOrderSaved_thenShouldBeAbleToRetrieveIt.executor": "Debug",
-    "Gradle.OrderEntityTests.executor": "Run",
-    "Gradle.OrderEntityTests.testOrderDate_whenNull_shouldReturnConstraintViolations.executor": "Run",
-    "Gradle.Tests in 'TransportCompany.test'.executor": "Run",
-    "Gradle.Tests in 'org.f108349.denis.dao'.executor": "Run",
-    "Gradle.TransportCompany [:org.f108349.denis.Main.main()].executor": "Run",
-    "Gradle.TransportCompany [build].executor": "Run",
-    "Gradle.VehicleDaoIntegrationTests.executor": "Run",
-    "Gradle.VehicleDaoTests.executor": "Run",
-    "Gradle.VehicleEntityTests.executor": "Run",
-    "Gradle.VehicleTypeDaoTests.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Denis/Desktop/pl/java/TransportCompany/src/test/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.3632184",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build TransportCompany.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyDaoIntegrationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyDaoTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyDaoTests.testCompanyDao_whenCompanyDeleted_thenShouldNotBeRetrievable.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyDaoTests.testCompanyDao_whenCompanyUpdated_thenChangesShouldPersist.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CompanyDaoTests.whenCompanyNameIsBlank_thenAssertConstraintViolations.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.CompanyDaoTests.whenCompanyNameSubceedsMinLength_thenAssertConstraintViolations.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.CompanyDaoTests.whenEmailIsBlank_thenAssertConstraintViolations.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.CompanyEntityTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CustomerEntityTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeClassificationDaoIntegrationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeClassificationDaoTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeClassificationDaoTests.testEmployeeClassificationDao_whenClassificationDeleted_thenShouldNotBeRetrievable.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeClassificationEntityTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeDaoIntegrationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeDaoTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeSaved_thenShouldBeAbleToRetrieveIt.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeUpdated_thenChangesShouldPersist.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.EmployeeEntityTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.OrderDaoIntegrationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.OrderDaoTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.OrderDaoTests.testOrderDao_whenOrderSaved_thenShouldBeAbleToRetrieveIt.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.OrderEntityTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.OrderEntityTests.testOrderDate_whenNull_shouldReturnConstraintViolations.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'TransportCompany.test'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'org.f108349.denis.dao'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TransportCompany [:org.f108349.denis.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.TransportCompany [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VehicleDaoIntegrationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VehicleDaoTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VehicleEntityTests.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VehicleTypeDaoTests.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Denis/Desktop/pl/java/TransportCompany/src/test/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.3632184&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.f108349.denis.entity.validation" />
@@ -152,11 +144,11 @@
       <recent name="C:\Users\Denis\Desktop\pl\java\TransportCompany\src\test\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.f108349.denis.ConsoleCommands" />
       <recent name="org.f108349.denis.dao" />
       <recent name="org.f108349.denis.entity" />
       <recent name="org.f108349.denis.configuration" />
       <recent name="org.f108349.denis.entity.validation" />
-      <recent name="org.f108349.denis.ConsoleCommands" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Tests in 'TransportCompany.test'">
@@ -311,6 +303,7 @@
       <workItem from="1732485514972" duration="303000" />
       <workItem from="1732485831847" duration="71112000" />
       <workItem from="1733654483951" duration="104765000" />
+      <workItem from="1734609375414" duration="5297000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />
