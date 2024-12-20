@@ -6,14 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/OrderCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/OrderCc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/OrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/OrderDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/OrderDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/enums/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CompanyCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CompanyCc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/ConsoleUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/ConsoleUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CompanyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CompanyDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/entity/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CompanyDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CompanyDaoIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CompanyDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/CompanyDaoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/EmployeeDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/EmployeeDaoIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/EmployeeDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/EmployeeDaoTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/OrderDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/OrderDaoIntegrationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/OrderDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/OrderDaoTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/OrderEntityTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/OrderEntityTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleDaoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/VehicleTypeDaoTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/CompanyEntityTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/entity/CompanyEntityTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +166,7 @@
       <recent name="org.f108349.denis.entity.validation" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.OrderDaoTests">
+  <component name="RunManager" selected="Gradle.Tests in 'TransportCompany.test'">
     <configuration name="OrderDaoIntegrationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -279,10 +287,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'TransportCompany.test'" />
         <item itemvalue="Gradle.OrderDaoTests" />
         <item itemvalue="Gradle.OrderDaoIntegrationTests" />
         <item itemvalue="Gradle.OrderEntityTests" />
-        <item itemvalue="Gradle.Tests in 'TransportCompany.test'" />
         <item itemvalue="Gradle.OrderDaoTests.testOrderDao_whenOrderSaved_thenShouldBeAbleToRetrieveIt" />
       </list>
     </recent_temporary>
@@ -310,7 +318,7 @@
       <workItem from="1732485514972" duration="303000" />
       <workItem from="1732485831847" duration="71112000" />
       <workItem from="1733654483951" duration="104765000" />
-      <workItem from="1734609375414" duration="9728000" />
+      <workItem from="1734609375414" duration="16238000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />

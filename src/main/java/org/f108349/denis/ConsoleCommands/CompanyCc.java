@@ -25,8 +25,9 @@ public class CompanyCc {
         String registrationNo = ConsoleUtils.promptString(scanner, "Enter registration no: ");
         String email = ConsoleUtils.promptString(scanner, "Enter email: ");
         String phone = ConsoleUtils.promptString(scanner, "Enter phone number: ");
+        double income = ConsoleUtils.promptDouble(scanner, "Enter income: ");
 
-        CompanyDto company = new CompanyDto(name, registrationNo, email, phone);
+        CompanyDto company = new CompanyDto(name, registrationNo, email, phone, income);
         dao.saveCompany(company);
         System.out.println("Company saved successfully.");
     }
@@ -77,6 +78,10 @@ public class CompanyCc {
         menuHandler.addOption("4", "Phone", () -> {
             System.out.println("Current phone: " + company.getPhone());
             company.setPhone(ConsoleUtils.promptString(scanner, "Enter phone: "));
+        });
+        menuHandler.addOption("5", "Income", () -> {
+            System.out.println("Current income: " + company.getIncome());
+            company.setIncome(ConsoleUtils.promptDouble(scanner, "Enter income: "));
         });
 
         menuHandler.run();

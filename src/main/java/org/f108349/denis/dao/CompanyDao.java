@@ -17,7 +17,7 @@ public class CompanyDao extends BaseDao<CompanyDto, Company> {
     
     public void saveCompany(CompanyDto companyDto) {
         Company company = new Company(companyDto.getName(), companyDto.getRegistrationNo(), 
-                companyDto.getEmail(), companyDto.getPhone());
+                companyDto.getEmail(), companyDto.getPhone(), companyDto.getIncome());
         try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             session.persist(company);
@@ -56,6 +56,7 @@ public class CompanyDao extends BaseDao<CompanyDto, Company> {
             company.setRegistrationNo(companyDto.getRegistrationNo());
             company.setEmail(companyDto.getEmail());
             company.setPhone(companyDto.getPhone());
+            company.setIncome(companyDto.getIncome());
             
             session.merge(company);
             tx.commit();

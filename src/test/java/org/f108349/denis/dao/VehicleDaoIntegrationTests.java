@@ -55,7 +55,7 @@ public class VehicleDaoIntegrationTests {
             session.createMutationQuery("DELETE FROM VehicleType").executeUpdate();
 
             Company company = new Company("Test", "123456789", 
-                    "testemail@gmail.com", "+359 88 2221111");
+                    "testemail@gmail.com", "+359 88 2221111", 1200);
             String companyId = company.getId();
             session.persist(company);
 

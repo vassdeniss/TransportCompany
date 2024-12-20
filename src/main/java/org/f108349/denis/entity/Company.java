@@ -15,12 +15,13 @@ import java.util.UUID;
 public class Company {
     public Company() {}
     
-    public Company(String name, String registrationNo, String email, String phone) {
+    public Company(String name, String registrationNo, String email, String phone, double income) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.registrationNo = registrationNo;
         this.email = email;
         this.phone = phone;
+        this.income = income;
         this.isDeleted = false;
     }
     
@@ -45,6 +46,11 @@ public class Company {
     @Column
     private String phone;
 
+    @NotNull(message = "Income cannot be null.")
+    @Min(value = 0, message = "Income must be a positive value.")
+    @Column(nullable = false)
+    private double income;
+    
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
 
@@ -88,6 +94,14 @@ public class Company {
         this.phone = phone;
     }
 
+    public double getIncome() {
+        return this.income;
+    }
+    
+    public void setIncome(double income) {
+        this.income = income;
+    }
+    
     public boolean isDeleted() {
         return this.isDeleted;
     }

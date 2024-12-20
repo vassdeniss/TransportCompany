@@ -54,7 +54,7 @@ public class CompanyDaoTests {
     public void testCompanyDao_whenCompanySaved_thenShouldBeAbleToRetrieveIt() {
         // Arrange
         CompanyDto dto = new CompanyDto("Test Company", "123456789", 
-                "test@example.com", "+359 88 7491288");
+                "test@example.com", "+359 88 7491288", 1200);
 
         // Act
         this.companyDao.saveCompany(dto);
@@ -73,7 +73,7 @@ public class CompanyDaoTests {
     public void testCompanyDao_whenCompanyUpdated_thenChangesShouldPersist() {
         // Arrange
         CompanyDto dto = new CompanyDto("Old Name", "987654321", 
-                "old@example.com", "+359 88 4123122");
+                "old@example.com", "+359 88 4123122", 1200);
         this.companyDao.saveCompany(dto);
 
         CompanyDto saved = this.companyDao.getAllCompaniesWhereNotDeleted().getFirst();
@@ -99,7 +99,7 @@ public class CompanyDaoTests {
     public void testCompanyDao_whenCompanyDeleted_thenShouldNotBeRetrievable() {
         // Arrange
         CompanyDto dto = new CompanyDto("DeleteMe Inc.", "123456789", 
-                "delete@example.com", "+359 88 4123122");
+                "delete@example.com", "+359 88 4123122", 1200);
         this.companyDao.saveCompany(dto);
 
         CompanyDto saved = this.companyDao.getAllCompaniesWhereNotDeleted().getFirst();

@@ -8,12 +8,14 @@ public class CompanyDto {
     private String registrationNo;
     private String email;
     private String phone;
+    private double income;
 
-    public CompanyDto(String name, String registrationNo, String email, String phone) {
+    public CompanyDto(String name, String registrationNo, String email, String phone, double income) {
         this.name = name;
         this.registrationNo = registrationNo;
         this.email = email;
         this.phone = phone;
+        this.income = income;
     }
     
     public CompanyDto(Company company) {
@@ -22,6 +24,7 @@ public class CompanyDto {
         this.registrationNo = company.getRegistrationNo();
         this.email = company.getEmail();
         this.phone = company.getPhone();
+        this.income = company.getIncome();
     }
 
     public String getId() {
@@ -59,6 +62,14 @@ public class CompanyDto {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    
+    public double getIncome() {
+        return this.income;
+    }
+    
+    public void setIncome(double income) {
+        this.income = income;
+    }
 
     @Override
     public String toString() {
@@ -66,6 +77,7 @@ public class CompanyDto {
                "\n    Name is '" + this.name + '\'' + 
                "\n    Registration No is '" + this.registrationNo + '\'' + 
                "\n    Email is '" + this.email + '\'' + 
-               "\n    Phone Number is '" + this.phone + '\'';
+               "\n    Phone Number is '" + this.phone + '\'' + 
+               "\n    Income is '" + this.income + '\'';
     }
 }
