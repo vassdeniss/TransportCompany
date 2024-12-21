@@ -77,6 +77,7 @@ public class CompanyDaoIntegrationTests {
         assertEquals("123456789", retrieved.getRegistrationNo());
         assertEquals("test@example.com", retrieved.getEmail());
         assertEquals("+359 88 7491288", retrieved.getPhone());
+        assertEquals(1200, retrieved.getIncome());
     }
     
     @Test

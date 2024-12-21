@@ -1,10 +1,7 @@
 package org.f108349.denis.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import org.f108349.denis.entity.validation.Phone;
 
 import java.util.UUID;
@@ -15,13 +12,14 @@ public class Employee {
     public Employee() {}
     
     public Employee(String firstName, String lastName, String email, String phone, 
-                    java.sql.Date hireDate) {
+                    java.sql.Date hireDate, double salary) {
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.hireDate = hireDate;
+        this.salary = salary;
         this.isDeleted = false;
     }
     
@@ -51,6 +49,10 @@ public class Employee {
     @Column(name = "hire_date")
     private java.sql.Date hireDate;
 
+    @Min(value = 0, message = "Salary must be a positive value.")
+    @Column(nullable = false)
+    private double salary;
+    
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
     
@@ -108,6 +110,14 @@ public class Employee {
 
     public void setHireDate(java.sql.Date hireDate) {
         this.hireDate = hireDate;
+    }
+    
+    public double getSalary() {
+        return this.salary;
+    }
+    
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public boolean isDeleted() {

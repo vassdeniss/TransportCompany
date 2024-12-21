@@ -92,6 +92,20 @@ public class CompanyEntityTests {
     }
     
     @Test
+    public void testIncome_whenNegative_shouldReturnConstraintViolations() {
+        // Assert
+        Company company = new Company("Nestle", "123456789", 
+                "someMail@mail.bg", "+359 88 4567891", -1);
+        
+        // ACt
+        List<String> messages = EntityHelper.validate(company);
+
+        // Assert
+        assertEquals(1, messages.size());
+        assertTrue(messages.contains("Income must be a positive value."));
+    }
+    
+    @Test
     public void testAllFields_whenValid_shouldNotReturnConstraintViolations() {
         // Arrange
         Company company = new Company("Nestle", "123456789", 

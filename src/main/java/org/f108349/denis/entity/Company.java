@@ -46,7 +46,6 @@ public class Company {
     @Column
     private String phone;
 
-    @NotNull(message = "Income cannot be null.")
     @Min(value = 0, message = "Income must be a positive value.")
     @Column(nullable = false)
     private double income;

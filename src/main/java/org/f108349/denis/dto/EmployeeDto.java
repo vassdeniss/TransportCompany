@@ -14,18 +14,21 @@ public class EmployeeDto {
     private String email;
     private String phone;
     private Date hireDate;
+    private double salary;
     private boolean isDeleted;
     private String companyId;
     private Company company;
     private String employeeClassificationId;
     private EmployeeClassification employeeClassification;
 
-    public EmployeeDto(String firstName, String lastName, String email, String phone, String companyId, String employeeClassificationId) {
+    public EmployeeDto(String firstName, String lastName, String email, String phone, double salary, 
+                       String companyId, String employeeClassificationId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.hireDate = Date.valueOf(LocalDate.now());
+        this.salary = salary;
         this.companyId = companyId;
         this.employeeClassificationId = employeeClassificationId;
     }
@@ -37,6 +40,7 @@ public class EmployeeDto {
         this.email = employee.getEmail();
         this.phone = employee.getPhone();
         this.hireDate = employee.getHireDate();
+        this.salary = employee.getSalary();
         this.isDeleted = employee.isDeleted();
         this.companyId = employee.getCompany() != null ? employee.getCompany().getId() : null;
         this.employeeClassificationId = employee.getEmployeeClassification() != null ? employee.getEmployeeClassification().getId() : null;
@@ -90,6 +94,14 @@ public class EmployeeDto {
 
     public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
+    }
+    
+    public double getSalary() {
+        return this.salary;
+    }
+    
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
     public boolean isDeleted() {

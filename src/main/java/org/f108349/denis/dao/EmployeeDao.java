@@ -1,6 +1,5 @@
 package org.f108349.denis.dao;
 
-import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.EmployeeDto;
 import org.f108349.denis.entity.Company;
 import org.f108349.denis.entity.Employee;
@@ -44,7 +43,8 @@ public class EmployeeDao extends BaseDao<EmployeeDto, Employee> {
                 return false;
             }
             
-            Employee employee = new Employee(employeeDto.getFirstName(), employeeDto.getLastName(), employeeDto.getEmail(), employeeDto.getPhone(), employeeDto.getHireDate());
+            Employee employee = new Employee(employeeDto.getFirstName(), employeeDto.getLastName(), 
+                    employeeDto.getEmail(), employeeDto.getPhone(), employeeDto.getHireDate(), employeeDto.getSalary());
             employee.setCompany(company);
             employee.setEmployeeClassification(classification);
             session.persist(employee);
@@ -85,6 +85,7 @@ public class EmployeeDao extends BaseDao<EmployeeDto, Employee> {
             employee.setFirstName(employeeDto.getFirstName());
             employee.setLastName(employeeDto.getLastName());
             employee.setHireDate(employeeDto.getHireDate());
+            employee.setSalary(employeeDto.getSalary());
             
             this.applyCompanyAndClassification(session, employeeDto, employee);
             

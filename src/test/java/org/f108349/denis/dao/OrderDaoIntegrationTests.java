@@ -69,7 +69,7 @@ public class OrderDaoIntegrationTests {
             session.persist(classification);
 
             Employee employee = new Employee("John", "Doe", "testmail@mail.bg", 
-                    "+359881952511", Date.valueOf(LocalDate.of(1990, 1, 1)));
+                    "+359881952511", Date.valueOf(LocalDate.of(1990, 1, 1)), 1200);
             employee.setEmployeeClassification(classification);
             String employeeId = employee.getId();
             session.persist(employee);

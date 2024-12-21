@@ -67,7 +67,7 @@ public class EmployeeDaoIntegrationTests {
             tx.commit();
             
             this.employeeDto = new EmployeeDto("John", "Doe", "john.doe@example.com", "+359 88 1234567", 
-                companyId, classificationId);
+                1300, companyId, classificationId);
         }
 
         this.employeeDao = new EmployeeDao(sessionFactory);
@@ -95,6 +95,7 @@ public class EmployeeDaoIntegrationTests {
         assertEquals("Doe", retrieved.getLastName());
         assertEquals("john.doe@example.com", retrieved.getEmail());
         assertEquals("+359 88 1234567", retrieved.getPhone());
+        assertEquals(1300, retrieved.getSalary());
     }
 
     @Test
@@ -111,6 +112,7 @@ public class EmployeeDaoIntegrationTests {
         saved.setEmail("emily.johnson@example.com");
         saved.setPhone("+359 88 9876543");
         saved.setHireDate(Date.valueOf(LocalDate.now().minusYears(5)));
+        saved.setSalary(1500);
         this.employeeDao.updateEmployee(saved);
 
         EmployeeDto updated = this.employeeDao.getEmployeeByIdWhereNotDeleted(employeeId);
@@ -121,6 +123,7 @@ public class EmployeeDaoIntegrationTests {
         assertEquals("emily.johnson@example.com", updated.getEmail());
         assertEquals("+359 88 9876543", updated.getPhone());
         assertEquals(Date.valueOf(LocalDate.now().minusYears(5)), updated.getHireDate());
+        assertEquals(1500, updated.getSalary());
     }
 
     @Test

@@ -67,6 +67,7 @@ public class CompanyDaoTests {
         assertEquals("123456789", retrieved.getRegistrationNo());
         assertEquals("test@example.com", retrieved.getEmail());
         assertEquals("+359 88 7491288", retrieved.getPhone());
+        assertEquals(1200, retrieved.getIncome());
     }
     
     @Test
@@ -84,6 +85,7 @@ public class CompanyDaoTests {
         saved.setRegistrationNo("123456789");
         saved.setEmail("new@example.com");
         saved.setPhone("+359 88 4132122");
+        saved.setIncome(1300);
         this.companyDao.updateCompany(saved);
 
         CompanyDto updated = this.companyDao.getCompanyByIdWhereNotDeleted(companyId);
@@ -93,6 +95,7 @@ public class CompanyDaoTests {
         assertEquals("123456789", updated.getRegistrationNo());
         assertEquals("new@example.com", updated.getEmail());
         assertEquals("+359 88 4132122", updated.getPhone());
+        assertEquals(1300, updated.getIncome());
     }
     
     @Test

@@ -22,7 +22,8 @@ public class Main {
                 System.out.println("4. Employee Classification");
                 System.out.println("5. Vehicle");
                 System.out.println("6. Vehicle Type");
-                System.out.println("7. Exit");
+                System.out.println("7. Order");
+                System.out.println("8. Exit");
                 System.out.print("Your choice: ");
                 
                 String choice = scanner.nextLine();
@@ -46,6 +47,9 @@ public class Main {
                         VehicleTypeCc.run(scanner);
                         break;
                     case "7":
+                        OrderCc.run(scanner);
+                        break;
+                    case "8":
                         isRunning = false;
                         System.out.println("Exiting application...");
                         break;

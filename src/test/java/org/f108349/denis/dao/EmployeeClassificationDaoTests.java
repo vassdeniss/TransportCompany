@@ -108,7 +108,7 @@ public class EmployeeClassificationDaoTests {
             Transaction tx = session.beginTransaction();
             EmployeeClassification classification = session.get(EmployeeClassification.class, classificationId);
             Employee employee = new Employee("John", "Doe", "testMail@mail.com", 
-                    "+359882121211", Date.valueOf("2024-02-02"));
+                    "+359882121211", Date.valueOf("2024-02-02"), 1300);
             employee.setEmployeeClassification(classification);
             session.persist(employee);
             tx.commit();

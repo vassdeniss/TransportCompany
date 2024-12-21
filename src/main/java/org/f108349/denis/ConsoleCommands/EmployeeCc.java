@@ -22,14 +22,15 @@ public class EmployeeCc {
     private static void saveEmployee(Scanner scanner, EmployeeDao dao) {
         System.out.println("\n--- Save Employee ---");
         
-        String firstName = ConsoleUtils.promptString(scanner, "Enter First Name: ");
-        String lastName = ConsoleUtils.promptString(scanner, "Enter Last Name: ");
-        String email = ConsoleUtils.promptString(scanner, "Enter Email: ");
-        String phone = ConsoleUtils.promptString(scanner, "Enter Phone: ");
-        String classificationId = ConsoleUtils.promptString(scanner, "Enter Employee Classification ID: ");
-        String companyId = ConsoleUtils.promptString(scanner, "Enter Company ID: ");
+        String firstName = ConsoleUtils.promptString(scanner, "Enter first name: ");
+        String lastName = ConsoleUtils.promptString(scanner, "Enter last name: ");
+        String email = ConsoleUtils.promptString(scanner, "Enter email: ");
+        String phone = ConsoleUtils.promptString(scanner, "Enter phone: ");
+        double salary = ConsoleUtils.promptDouble(scanner, "Enter salary: ");
+        String classificationId = ConsoleUtils.promptString(scanner, "Enter classification ID: ");
+        String companyId = ConsoleUtils.promptString(scanner, "Enter company ID: ");
 
-        EmployeeDto employee = new EmployeeDto(firstName, lastName, email, phone, companyId, classificationId);
+        EmployeeDto employee = new EmployeeDto(firstName, lastName, email, phone, salary, companyId, classificationId);
         boolean saved = dao.saveEmployee(employee);
         if (saved) {
             System.out.println("Employee saved successfully.");
@@ -67,33 +68,37 @@ public class EmployeeCc {
         System.out.println("Which field do you want to update?");
         
         MenuHandler menuHandler = new MenuHandler(scanner);
-        menuHandler.addOption("1", "First Name", () -> {
-            System.out.println("Current First Name: " + employee.getFirstName());
-            employee.setFirstName(ConsoleUtils.promptString(scanner, "Enter new First Name: "));
+        menuHandler.addOption("1", "First name", () -> {
+            System.out.println("Current first name: " + employee.getFirstName());
+            employee.setFirstName(ConsoleUtils.promptString(scanner, "Enter new first name: "));
         });
-        menuHandler.addOption("2", "Last Name", () -> {
-            System.out.println("Current Last Name: " + employee.getLastName());
-            employee.setLastName(ConsoleUtils.promptString(scanner, "Enter new Last Name: "));
+        menuHandler.addOption("2", "Last name", () -> {
+            System.out.println("Current last name: " + employee.getLastName());
+            employee.setLastName(ConsoleUtils.promptString(scanner, "Enter new last name: "));
         });
         menuHandler.addOption("3", "Email", () -> {
-            System.out.println("Current Email: " + employee.getEmail());
-            employee.setEmail(ConsoleUtils.promptString(scanner, "Enter new Email: "));
+            System.out.println("Current email: " + employee.getEmail());
+            employee.setEmail(ConsoleUtils.promptString(scanner, "Enter new email: "));
         });
         menuHandler.addOption("4", "Phone", () -> {
-            System.out.println("Current Phone: " + employee.getPhone());
-            employee.setPhone(ConsoleUtils.promptString(scanner, "Enter new Phone: "));
+            System.out.println("Current phone: " + employee.getPhone());
+            employee.setPhone(ConsoleUtils.promptString(scanner, "Enter new phone: "));
         });
-        menuHandler.addOption("5", "Hire Date", () -> {
-            System.out.println("Current Hire Date: " + employee.getHireDate());
-            employee.setHireDate(ConsoleUtils.promptDate(scanner, "Enter new Hire Date (yyyy-MM-dd): "));
+        menuHandler.addOption("5", "Hire date", () -> {
+            System.out.println("Current hire date: " + employee.getHireDate());
+            employee.setHireDate(ConsoleUtils.promptDate(scanner, "Enter new hire date (yyyy-MM-dd): "));
         });
-        menuHandler.addOption("6", "Update Company ID", () -> {
-            System.out.println("Current Company ID: " + employee.getCompanyId());
-            employee.setCompanyId(ConsoleUtils.promptString(scanner, "Enter new Company ID: "));
+        menuHandler.addOption("6", "Salary", () -> {
+            System.out.println("Current salary: " + employee.getSalary());
+            employee.setSalary(ConsoleUtils.promptDouble(scanner, "Enter new salary: "));
         });
-        menuHandler.addOption("7", "Update Classification ID", () -> {
-            System.out.println("Current Classification ID: " + employee.getEmployeeClassificationId());
-            employee.setEmployeeClassificationId(ConsoleUtils.promptString(scanner, "Enter new Classification ID: "));
+        menuHandler.addOption("7", "Update company ID", () -> {
+            System.out.println("Current company ID: " + employee.getCompanyId());
+            employee.setCompanyId(ConsoleUtils.promptString(scanner, "Enter new company ID: "));
+        });
+        menuHandler.addOption("8", "Update classification ID", () -> {
+            System.out.println("Current classification ID: " + employee.getEmployeeClassificationId());
+            employee.setEmployeeClassificationId(ConsoleUtils.promptString(scanner, "Enter new classification ID: "));
         });
         
         menuHandler.run();
