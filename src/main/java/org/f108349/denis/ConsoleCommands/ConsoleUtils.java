@@ -32,12 +32,12 @@ public class ConsoleUtils {
         }
     }
     
-    public static double promptDouble(Scanner scanner, String prompt) {
+    public static Double promptDouble(Scanner scanner, String prompt) {
         System.out.print(prompt);
         while (true) {
             String input = scanner.nextLine();
             try {
-                return Double.parseDouble(input);
+                return input.isEmpty() ? null : Double.parseDouble(input);
             } catch (NumberFormatException ex) {
                 System.out.print("Invalid double. Try again: ");
             }

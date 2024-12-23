@@ -23,7 +23,8 @@ public class Main {
                 System.out.println("5. Vehicle");
                 System.out.println("6. Vehicle Type");
                 System.out.println("7. Order");
-                System.out.println("8. Exit");
+                System.out.println("8. Data Manager");
+                System.out.println("9. Exit");
                 System.out.print("Your choice: ");
                 
                 String choice = scanner.nextLine();
@@ -50,6 +51,9 @@ public class Main {
                         OrderCc.run(scanner);
                         break;
                     case "8":
+                        DataManagerCc.run(scanner);
+                        break;
+                    case "9":
                         isRunning = false;
                         System.out.println("Exiting application...");
                         break;
