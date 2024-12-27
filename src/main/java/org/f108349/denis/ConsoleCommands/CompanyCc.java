@@ -4,6 +4,7 @@ import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dao.CompanyDao;
 import org.f108349.denis.dto.CompanyDto;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class CompanyCc {
@@ -25,7 +26,7 @@ public class CompanyCc {
         String registrationNo = ConsoleUtils.promptString(scanner, "Enter registration no: ");
         String email = ConsoleUtils.promptString(scanner, "Enter email: ");
         String phone = ConsoleUtils.promptString(scanner, "Enter phone number: ");
-        double income = ConsoleUtils.promptDouble(scanner, "Enter income: ");
+        Double income = ConsoleUtils.promptDouble(scanner, "Enter income: ");
 
         CompanyDto company = new CompanyDto(name, registrationNo, email, phone, income);
         dao.saveCompany(company);

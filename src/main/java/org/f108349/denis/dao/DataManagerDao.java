@@ -137,7 +137,7 @@ public class DataManagerDao {
         }
     }
     
-    public List<OrderDto> getShipmentsByCost(Double minCost, Double maxCost, String order) {
+    public List<OrderDto> getOrdersByCost(Double minCost, Double maxCost, String order) {
         try (Session session = sessionFactory.openSession()) {
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<OrderDto> cq = cb.createQuery(OrderDto.class);
@@ -145,17 +145,17 @@ public class DataManagerDao {
 
             List<Predicate> predicates = new ArrayList<>();
             if (Objects.nonNull(minCost)) {
-                predicates.add(cb.ge(root.get("cost"), minCost));
+                predicates.add(cb.ge(root.get("totalCost"), minCost));
             }
             if (Objects.nonNull(maxCost)) {
-                predicates.add(cb.le(root.get("cost"), maxCost));
+                predicates.add(cb.le(root.get("totalCost"), maxCost));
             }
             cq.where(predicates.toArray(new Predicate[0]));
 
             if ("desc".equalsIgnoreCase(order)) {
-                cq.orderBy(cb.desc(root.get("cost")));
+                cq.orderBy(cb.desc(root.get("totalCost")));
             } else {
-                cq.orderBy(cb.asc(root.get("cost")));
+                cq.orderBy(cb.asc(root.get("totalCost")));
             }
 
             return session.createQuery(cq).getResultList();

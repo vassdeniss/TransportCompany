@@ -13,7 +13,9 @@ public class DataManagerCc {
         handler.addOption("2", "Companies by Income", () -> getCompaniesByIncome(scanner, dao));
         handler.addOption("3", "Employees by Classification", () -> getEmployeesByClassification(scanner, dao));
         handler.addOption("4", "Employees by Salary", () -> getEmployeesBySalary(scanner, dao));
-        handler.addOption("5", "Back", () -> { });
+        handler.addOption("5", "Orders by Destination", () -> getOrderByDestination(scanner, dao));
+        handler.addOption("6", "Orders by Cost", () -> getOrdersByCost(scanner, dao));
+        handler.addOption("7", "Back", () -> { });
         handler.run();
     }
     
@@ -45,5 +47,20 @@ public class DataManagerCc {
         String order = ConsoleUtils.promptString(scanner, "Enter order (asc or desc): ");
         
         dao.getEmployeesBySalary(minSalary, maxSalary, order).forEach(System.out::println);
+    }
+    
+    public static void getOrderByDestination(Scanner scanner, DataManagerDao dao) {
+        String orderFiler = ConsoleUtils.promptString(scanner, "Enter an order filter (or press Enter to skip): ");
+        String order = ConsoleUtils.promptString(scanner, "Enter order (asc or desc): ");
+        
+        dao.getOrderByDestination(orderFiler, order).forEach(System.out::println);
+    }
+    
+    public static void getOrdersByCost(Scanner scanner, DataManagerDao dao) {
+        Double minCost = ConsoleUtils.promptDouble(scanner, "Enter minimum cost (or leave blank for no minimum): ");
+        Double maxCost = ConsoleUtils.promptDouble(scanner, "Enter maximum cost (or leave blank for no maximum): ");
+        String order = ConsoleUtils.promptString(scanner, "Enter order (asc or desc): ");
+        
+        dao.getOrdersByCost(minCost, maxCost, order).forEach(System.out::println);
     }
 }
