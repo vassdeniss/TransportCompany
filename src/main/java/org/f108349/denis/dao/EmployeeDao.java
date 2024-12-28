@@ -1,9 +1,14 @@
 package org.f108349.denis.dao;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.Root;
 import org.f108349.denis.dto.EmployeeDto;
 import org.f108349.denis.entity.Company;
 import org.f108349.denis.entity.Employee;
 import org.f108349.denis.entity.EmployeeClassification;
+import org.f108349.denis.entity.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -73,6 +78,35 @@ public class EmployeeDao extends BaseDao<EmployeeDto, Employee> {
         }
         
         return employees;
+    }
+    
+    public List<Object[]> getAllEmployeeOrders() {
+        List<Object[]> list;
+        try (Session session = this.sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
+            Root<Employee> root = cq.from(Employee.class);
+
+            Join<Employee, Order> orderJoin = root.join("orders");
+            Join<Employee, Company> companyJoin = root.join("company");
+            
+            cq.multiselect(
+                    cb.concat(
+                            cb.concat(root.get("firstName"), " "),
+                            root.get("lastName")
+                    ), 
+                    companyJoin.get("name"), 
+                    cb.count(orderJoin.get("id")),
+                    cb.sumAsDouble(orderJoin.get("totalCost"))).groupBy(root.get("id"));
+            
+            list = session.createQuery(cq).getResultList();            
+            
+            tx.commit();
+        }
+        
+        return list;
     }
     
     public void updateEmployee(EmployeeDto employeeDto) {

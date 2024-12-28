@@ -116,8 +116,8 @@ public class Company {
     }
     
     public static Company createTestCompany(int uniqueness) {
-        return new Company("Company " + uniqueness, 
-                "12345" + uniqueness + "789", 
+        return new Company("Company" + uniqueness, 
+                "12345789" + uniqueness, 
                 "test" + uniqueness + "@mail.bg",
                 "+359 88 213123" + uniqueness,
                 Double.parseDouble("100" + uniqueness));

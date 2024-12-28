@@ -2,8 +2,7 @@ package org.f108349.denis.dao;
 
 import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.EmployeeDto;
-import org.f108349.denis.entity.Company;
-import org.f108349.denis.entity.EmployeeClassification;
+import org.f108349.denis.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -41,6 +41,7 @@ public class EmployeeDaoTests {
     void setup() {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
+            session.createMutationQuery("DELETE FROM Order").executeUpdate();
             session.createMutationQuery("DELETE FROM Employee").executeUpdate();
             session.createMutationQuery("DELETE FROM Company").executeUpdate();
             session.createMutationQuery("DELETE FROM EmployeeClassification").executeUpdate();
@@ -68,6 +69,45 @@ public class EmployeeDaoTests {
         if (sessionFactory != null) {
             sessionFactory.close();
         }
+    }
+    
+    @Test
+    public void testGetAllEmployeeOrders_whenOrdersExist_thenShouldRetrieveAggregatedData() {
+        // Arrange
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+
+            Customer customer = Customer.createTestCustomer(1);
+            session.persist(customer);
+            
+            Company company = Company.createTestCompany(1);
+            session.persist(company);
+    
+            EmployeeClassification classification = EmployeeClassification.createTestClassification(1);
+            session.persist(classification);
+            
+            Employee employee = Employee.createTestEmployee(1, classification, company);
+            session.persist(employee);
+    
+            Order order1 = Order.createTestOrder(1, company, customer, employee);
+            Order order2 = Order.createTestOrder(2, company, customer, employee);
+            session.persist(order1);
+            session.persist(order2);
+    
+            tx.commit();
+        }
+    
+        // Act
+        List<Object[]> result = this.employeeDao.getAllEmployeeOrders();
+    
+        // Assert
+        assertEquals(1, result.size(), "There should be one employee in the result.");
+        
+        Object[] employeeOrderData = result.getFirst();
+        assertEquals("FirstName1 LastName1", employeeOrderData[0], "The employee's full name should match.");
+        assertEquals("Company1", employeeOrderData[1], "The company name should match.");
+        assertEquals(2L, employeeOrderData[2], "The order count should match.");
+        assertEquals(new BigDecimal("2003.00"), employeeOrderData[3], "The total cost should match.");
     }
 
     @Test

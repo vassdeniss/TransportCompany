@@ -13,11 +13,17 @@ public class ReportCc {
         CompanyDao companyDao = new CompanyDao(SessionFactoryUtil.getSessionFactory());
         MenuHandler handler = new MenuHandler(scanner);
         handler.addOption("1", "Get Companies Total Orders", () -> getCompanyInfoForOrdersMade(reportDao, companyDao));
+        handler.addOption("2", "Get Employees Total Orders", () -> getEmployeeInfoForOrdersMade(reportDao, employeeDao));
         handler.run();
     }
     
     private static void getCompanyInfoForOrdersMade(ReportDao reportDao, CompanyDao companyDao) {
         List<Object[]> reports = companyDao.getAllCompanyOrders();
         System.out.println(reportDao.getCompanyInfoForOrdersMade(reports));
+    }
+    
+    private static void getEmployeeInfoForOrdersMade(ReportDao reportDao, EmployeeDao employeeDao) {
+        List<Object[]> reports = employeeDao.getAllEmployeeOrders();
+        System.out.println(reportDao.getEmployeeInfoForOrdersMade(reports));
     }
 }

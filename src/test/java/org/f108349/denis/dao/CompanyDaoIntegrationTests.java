@@ -79,9 +79,9 @@ public class CompanyDaoIntegrationTests {
             session.persist(company1);
             session.persist(company2);
             
-            Order order1 = Order.createTestOrder(1, company1, customer);
-            Order order2 = Order.createTestOrder(2, company2, customer);
-            Order order3 = Order.createTestOrder(3, company2, customer);
+            Order order1 = Order.createTestOrder(1, company1, customer, null);
+            Order order2 = Order.createTestOrder(2, company2, customer, null);
+            Order order3 = Order.createTestOrder(3, company2, customer, null);
             session.persist(order1);
             session.persist(order2);
             session.persist(order3);

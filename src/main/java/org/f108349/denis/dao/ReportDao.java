@@ -17,4 +17,22 @@ public class ReportDao {
         
         return info.toString();
     }
+    
+    public String getEmployeeInfoForOrdersMade(List<Object[]> employeeInfo) {
+        StringBuilder info = new StringBuilder();
+        for (Object[] objects : employeeInfo) {
+            info.append("Employee ")
+                    .append(objects[0])
+                    .append(" (employed by ")
+                    .append(objects[1])
+                    .append(")")
+                    .append(" is assigned to ")
+                    .append(objects[2])
+                    .append(" orders and made ")
+                    .append(objects[3])
+                    .append(".\n");
+        }
+        
+        return info.toString();
+    }
 }

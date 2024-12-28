@@ -189,7 +189,7 @@ public class Order {
         this.vehicle = vehicle;
     }
     
-    public static Order createTestOrder(int uniqueness, Company company, Customer customer) {
+    public static Order createTestOrder(int uniqueness, Company company, Customer customer, Employee employee) {
         Order order = new Order(
                 "item" + uniqueness,
                 Date.valueOf(LocalDate.now().plusDays(uniqueness)),
@@ -201,6 +201,10 @@ public class Order {
         
         order.setCustomer(customer);
         order.setCompany(company);
+        
+        if (employee != null) {
+            order.setEmployee(employee);
+        }
         
         return order;
     }

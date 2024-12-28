@@ -4,6 +4,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.f108349.denis.entity.validation.Phone;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -63,6 +67,9 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "employee_classification_id", nullable = true, foreignKey = @ForeignKey(name = "FK_employee_classification"))
     private EmployeeClassification employeeClassification;
+    
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+    private Set<Order> orders;
     
     public String getId() {
         return this.id;
@@ -142,5 +149,24 @@ public class Employee {
 
     public void setEmployeeClassification(EmployeeClassification employeeClassification) {
         this.employeeClassification = employeeClassification;
+    }
+    
+    public Set<Order> getOrders() {
+        return this.orders;
+    }
+    
+    public static Employee createTestEmployee(int uniqueness, EmployeeClassification classification, Company company) {
+        Employee employee = new Employee(
+                "FirstName" + uniqueness,
+                "LastName" + uniqueness,
+                "email" + uniqueness + "@mail.bg",
+                "+359 88 215261" + uniqueness,
+                Date.valueOf(LocalDate.now().minusDays(uniqueness)),
+                1000 + uniqueness);
+        
+        employee.setEmployeeClassification(classification);
+        employee.setCompany(company);
+        
+        return employee;
     }
 }

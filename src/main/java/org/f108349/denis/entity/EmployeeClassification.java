@@ -2,6 +2,7 @@ package org.f108349.denis.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import org.hibernate.grammars.hql.HqlParser;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -63,5 +64,9 @@ public class EmployeeClassification {
 
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
+    }
+    
+    public static EmployeeClassification createTestClassification(int uniqueness) {
+        return new EmployeeClassification("name" + uniqueness);
     }
 }
