@@ -12,7 +12,7 @@ public class VehicleDto {
     private String companyId;
     private Company company;
     private String vehicleTypeId;
-    private VehicleType vehicleType;
+    private VehicleTypeDto vehicleType;
     
     public VehicleDto(String model, String licensePlate, 
                       int capacity, String companyId, String vehicleTypeId) {
@@ -33,7 +33,7 @@ public class VehicleDto {
         this.companyId = vehicle.getCompany() != null ? vehicle.getCompany().getId() : null;
         this.vehicleTypeId = vehicle.getVehicleType() != null ? vehicle.getVehicleType().getId() : null;
         this.company = vehicle.getCompany();
-        this.vehicleType = vehicle.getVehicleType();
+        this.vehicleType = new VehicleTypeDto(vehicle.getVehicleType());
     }
 
     public String getId() {
@@ -88,11 +88,11 @@ public class VehicleDto {
         this.vehicleTypeId = vehicleTypeId;
     }
     
-    public VehicleType getVehicleType() {
+    public VehicleTypeDto getVehicleType() {
         return this.vehicleType;
     }
     
-    public void setVehicleType(VehicleType vehicleType) {
+    public void setVehicleType(VehicleTypeDto vehicleType) {
         this.vehicleType = vehicleType;
     }
     

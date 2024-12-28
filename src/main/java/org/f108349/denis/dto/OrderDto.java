@@ -1,10 +1,6 @@
 package org.f108349.denis.dto;
 
 import org.f108349.denis.entity.Order;
-import org.f108349.denis.entity.Company;
-import org.f108349.denis.entity.Customer;
-import org.f108349.denis.entity.Employee;
-import org.f108349.denis.entity.Vehicle;
 import org.f108349.denis.entity.enums.Status;
 
 import java.math.BigDecimal;
@@ -23,10 +19,10 @@ public class OrderDto {
     private String employeeId;
     private String companyId;
     private String vehicleId;
-    private Customer customer;
-    private Employee employee;
-    private Company company;
-    private Vehicle vehicle;
+    private CustomerDto customer;
+    private EmployeeDto employee;
+    private CompanyDto company;
+    private VehicleDto vehicle;
 
     public OrderDto() {}
     
@@ -59,14 +55,18 @@ public class OrderDto {
         this.employeeId = order.getEmployee() != null ? order.getEmployee().getId() : null;
         this.companyId = order.getCompany() != null ? order.getCompany().getId() : null;
         this.vehicleId = order.getVehicle() != null ? order.getVehicle().getId() : null;
-        this.customer = order.getCustomer();
-        this.employee = order.getEmployee();
-        this.company = order.getCompany();
-        this.vehicle = order.getVehicle();
+        this.customer = new CustomerDto(order.getCustomer());
+        this.employee = new EmployeeDto(order.getEmployee());
+        this.company = new CompanyDto(order.getCompany());
+        this.vehicle = new VehicleDto(order.getVehicle());
     }
 
     public String getId() {
         return this.id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getItem() {
@@ -157,35 +157,35 @@ public class OrderDto {
         this.vehicleId = vehicleId;
     }
 
-    public Customer getCustomer() {
+    public CustomerDto getCustomer() {
         return this.customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(CustomerDto customer) {
         this.customer = customer;
     }
 
-    public Employee getEmployee() {
+    public EmployeeDto getEmployee() {
         return this.employee;
     }
 
-    public void setEmployee(Employee employee) {
+    public void setEmployee(EmployeeDto employee) {
         this.employee = employee;
     }
 
-    public Company getCompany() {
+    public CompanyDto getCompany() {
         return this.company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(CompanyDto company) {
         this.company = company;
     }
 
-    public Vehicle getVehicle() {
+    public VehicleDto getVehicle() {
         return this.vehicle;
     }
 
-    public void setVehicle(Vehicle vehicle) {
+    public void setVehicle(VehicleDto vehicle) {
         this.vehicle = vehicle;
     }
 

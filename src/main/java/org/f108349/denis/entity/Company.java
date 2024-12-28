@@ -1,13 +1,12 @@
 package org.f108349.denis.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.f108349.denis.entity.validation.Phone;
 import org.f108349.denis.entity.validation.RegistrationNumber;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -53,6 +52,9 @@ public class Company {
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted;
 
+    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+    private Set<Order> orders = new HashSet<>();
+    
     public String getId() {
         return this.id;
     }
@@ -107,5 +109,17 @@ public class Company {
 
     public void setDeleted(boolean isDeleted) {
         this.isDeleted = isDeleted;
+    }
+    
+    public Set<Order> getOrders() {
+        return this.orders;
+    }
+    
+    public static Company createTestCompany(int uniqueness) {
+        return new Company("Company " + uniqueness, 
+                "12345" + uniqueness + "789", 
+                "test" + uniqueness + "@mail.bg",
+                "+359 88 213123" + uniqueness,
+                Double.parseDouble("100" + uniqueness));
     }
 }

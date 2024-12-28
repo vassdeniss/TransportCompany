@@ -109,4 +109,13 @@ public class Customer {
     public void setDeleted(boolean deleted) {
         this.isDeleted = deleted;
     }
+    
+    public static Customer createTestCustomer(int uniqueness) {
+        return new Customer(
+                "FirstName" + uniqueness,
+                "LastName" + uniqueness,
+                "email" + uniqueness + "@mail.bg",
+                "+359 88 215261" + uniqueness,
+                "street" + uniqueness);
+    }
 }

@@ -1,8 +1,6 @@
 package org.f108349.denis.dto;
 
-import org.f108349.denis.entity.Company;
 import org.f108349.denis.entity.Employee;
-import org.f108349.denis.entity.EmployeeClassification;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -17,9 +15,9 @@ public class EmployeeDto {
     private double salary;
     private boolean isDeleted;
     private String companyId;
-    private Company company;
+    private CompanyDto company;
     private String employeeClassificationId;
-    private EmployeeClassification employeeClassification;
+    private EmployeeClassificationDto employeeClassification;
 
     public EmployeeDto() {}
     
@@ -46,8 +44,8 @@ public class EmployeeDto {
         this.isDeleted = employee.isDeleted();
         this.companyId = employee.getCompany() != null ? employee.getCompany().getId() : null;
         this.employeeClassificationId = employee.getEmployeeClassification() != null ? employee.getEmployeeClassification().getId() : null;
-        this.company = employee.getCompany();
-        this.employeeClassification = employee.getEmployeeClassification();
+        this.company = new CompanyDto(employee.getCompany());
+        this.employeeClassification = new EmployeeClassificationDto(employee.getEmployeeClassification());
     }
 
     public String getId() {
@@ -122,11 +120,11 @@ public class EmployeeDto {
         this.companyId = companyId;
     }
 
-    public Company getCompany() {
+    public CompanyDto getCompany() {
         return this.company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(CompanyDto company) {
         this.company = company;
     }
 
@@ -138,11 +136,11 @@ public class EmployeeDto {
         this.employeeClassificationId = employeeClassificationId;
     }
 
-    public EmployeeClassification getEmployeeClassification() {
+    public EmployeeClassificationDto getEmployeeClassification() {
         return this.employeeClassification;
     }
 
-    public void setEmployeeClassification(EmployeeClassification employeeClassification) {
+    public void setEmployeeClassification(EmployeeClassificationDto employeeClassification) {
         this.employeeClassification = employeeClassification;
     }
 

@@ -9,6 +9,7 @@ import org.f108349.denis.entity.enums.Status;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -186,5 +187,21 @@ public class Order {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+    
+    public static Order createTestOrder(int uniqueness, Company company, Customer customer) {
+        Order order = new Order(
+                "item" + uniqueness,
+                Date.valueOf(LocalDate.now().plusDays(uniqueness)),
+                Date.valueOf(LocalDate.now().plusMonths(uniqueness)),
+                "somePlace" + uniqueness,
+                BigDecimal.valueOf(1000 + uniqueness),
+                BigDecimal.valueOf(10 + uniqueness),
+                Status.SHIPPED);
+        
+        order.setCustomer(customer);
+        order.setCompany(company);
+        
+        return order;
     }
 }

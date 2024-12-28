@@ -24,7 +24,9 @@ public class Main {
                 System.out.println("6. Vehicle Type");
                 System.out.println("7. Order");
                 System.out.println("8. Data Manager");
-                System.out.println("9. Exit");
+                System.out.println("9. File Order");
+                System.out.println("10. Reports");
+                System.out.println("11. Exit");
                 System.out.print("Your choice: ");
                 
                 String choice = scanner.nextLine();
@@ -57,6 +59,9 @@ public class Main {
                         FileOrderCc.run(scanner);
                         break;
                     case "10":
+                        ReportCc.run(scanner);
+                        break;
+                    case "11":
                         isRunning = false;
                         System.out.println("Exiting application...");
                         break;
