@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a65c9ef2-5588-4718-a445-2b8b4841df03" name="Changes" comment="?">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/ReportCc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/ReportDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/DataManagerDaoIntegrationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/DataManagerDaoTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/f108349/denis/dao/FileOrderDaoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CompanyCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/CompanyCc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/DataManagerCc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/ConsoleCommands/DataManagerCc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/CompanyDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/DataManagerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/DataManagerDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/OrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dao/OrderDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CompanyDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CompanyDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CustomerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/f108349/denis/dto/CustomerDto.java" afterDir="false" />
@@ -112,7 +106,7 @@
     "Gradle.CustomerEntityTests.executor": "Run",
     "Gradle.DataManagerDaoIntegrationTests.executor": "Run",
     "Gradle.DataManagerDaoIntegrationTests.testGetOrdersByCost_whenRangeProvided_shouldReturnWithinRange.executor": "Debug",
-    "Gradle.DataManagerDaoTests.executor": "Run",
+    "Gradle.DataManagerDaoTests.executor": "Debug",
     "Gradle.DataManagerDaoTests.testGetOrdersByCost_whenOnlyMaxProvided_shouldReturnAllBelowOrEqualMaxOrderedDesc.executor": "Debug",
     "Gradle.EmployeeClassificationDaoIntegrationTests.executor": "Run",
     "Gradle.EmployeeClassificationDaoTests.executor": "Run",
@@ -123,6 +117,7 @@
     "Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeSaved_thenShouldBeAbleToRetrieveIt.executor": "Run",
     "Gradle.EmployeeDaoTests.testEmployeeDao_whenEmployeeUpdated_thenChangesShouldPersist.executor": "Run",
     "Gradle.EmployeeEntityTests.executor": "Run",
+    "Gradle.FileOrderDaoTest.executor": "Run",
     "Gradle.OrderDaoIntegrationTests.executor": "Run",
     "Gradle.OrderDaoTests.executor": "Run",
     "Gradle.OrderDaoTests.testOrderDao_whenOrderSaved_thenShouldBeAbleToRetrieveIt.executor": "Debug",
@@ -173,31 +168,7 @@
       <recent name="org.f108349.denis.entity.validation" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.DataManagerDaoIntegrationTests">
-    <configuration name="CompanyEntityTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.f108349.denis.entity.CompanyEntityTests&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.FileOrderDaoTest">
     <configuration name="DataManagerDaoIntegrationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -294,13 +265,37 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="FileOrderDaoTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.f108349.denis.dao.FileOrderDaoTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.FileOrderDaoTest" />
         <item itemvalue="Gradle.DataManagerDaoIntegrationTests" />
         <item itemvalue="Gradle.DataManagerDaoTests" />
         <item itemvalue="Gradle.DataManagerDaoIntegrationTests.testGetOrdersByCost_whenRangeProvided_shouldReturnWithinRange" />
         <item itemvalue="Gradle.DataManagerDaoTests.testGetOrdersByCost_whenOnlyMaxProvided_shouldReturnAllBelowOrEqualMaxOrderedDesc" />
-        <item itemvalue="Gradle.CompanyEntityTests" />
       </list>
     </recent_temporary>
   </component>
@@ -328,7 +323,7 @@
       <workItem from="1732485831847" duration="71112000" />
       <workItem from="1733654483951" duration="104765000" />
       <workItem from="1734609375414" duration="54532000" />
-      <workItem from="1735169396740" duration="16616000" />
+      <workItem from="1735169396740" duration="19043000" />
     </task>
     <task id="LOCAL-00001" summary="feat: basic hibernate options">
       <option name="closed" value="true" />

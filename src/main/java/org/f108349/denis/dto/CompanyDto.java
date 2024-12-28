@@ -10,7 +10,10 @@ public class CompanyDto {
     private String phone;
     private double income;
 
-    public CompanyDto(String name, String registrationNo, String email, String phone, double income) {
+    public CompanyDto() {}
+    
+    public CompanyDto(String name, String registrationNo, String email, 
+                      String phone, double income) {
         this.name = name;
         this.registrationNo = registrationNo;
         this.email = email;
@@ -26,7 +29,7 @@ public class CompanyDto {
         this.phone = company.getPhone();
         this.income = company.getIncome();
     }
-
+    
     public String getId() {
         return this.id;
     }

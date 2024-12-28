@@ -18,6 +18,8 @@ dependencies {
     implementation("org.glassfish:jakarta.el:4.0.2")
     implementation("com.h2database:h2:2.1.214")
     implementation("org.apache.logging.log4j:log4j-core:2.17.1")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.18.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.18.2")
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.testcontainers:testcontainers:1.19.0'

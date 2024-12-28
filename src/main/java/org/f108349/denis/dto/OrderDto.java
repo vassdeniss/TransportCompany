@@ -28,6 +28,8 @@ public class OrderDto {
     private Company company;
     private Vehicle vehicle;
 
+    public OrderDto() {}
+    
     public OrderDto(String item, Date orderDate, Date shipmentDate, String destination,
                     BigDecimal totalCost, BigDecimal totalWeight, 
                     String customerId, String employeeId, String companyId, String vehicleId, Status status) {

@@ -1,5 +1,9 @@
 package org.f108349.denis.dao;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Root;
 import org.f108349.denis.dto.OrderDto;
 import org.f108349.denis.entity.*;
 import org.hibernate.Session;
@@ -91,6 +95,28 @@ public class OrderDao extends BaseDao<OrderDto, Order> {
         try (Session session = this.sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
             orders = this.getAllWhereNotDeleted(session, OrderDto.class, Order.class);
+            tx.commit();
+        }
+        
+        return orders;
+    }
+    
+    public List<OrderDto> getAllOrdersEagerWhereNotDeleted() {
+        List<OrderDto> orders;
+        try (Session session = this.sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            
+            String hql = "SELECT new org.f108349.denis.dto.OrderDto(o) " +
+                         "FROM Order o " +
+                         "LEFT JOIN FETCH o.company c " +
+                         "LEFT JOIN FETCH o.customer cu " +
+                         "LEFT JOIN FETCH o.employee e " +
+                         "LEFT JOIN FETCH e.employeeClassification ec " +
+                         "LEFT JOIN FETCH o.vehicle v " +
+                         "WHERE o.isDeleted = false";
+
+            orders = session.createQuery(hql, OrderDto.class).getResultList();      
+            
             tx.commit();
         }
         

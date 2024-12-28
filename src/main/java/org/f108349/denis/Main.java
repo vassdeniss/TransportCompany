@@ -54,6 +54,9 @@ public class Main {
                         DataManagerCc.run(scanner);
                         break;
                     case "9":
+                        FileOrderCc.run(scanner);
+                        break;
+                    case "10":
                         isRunning = false;
                         System.out.println("Exiting application...");
                         break;

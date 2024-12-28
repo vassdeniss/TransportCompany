@@ -10,6 +10,8 @@ public class CustomerDto {
     private String phone;
     private String address;
     
+    public CustomerDto() {}
+    
     public CustomerDto(String firstName, String lastName, String email, String phone, String address) {
         this.firstName = firstName;
         this.lastName = lastName;

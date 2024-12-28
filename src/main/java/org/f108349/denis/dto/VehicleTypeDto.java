@@ -6,6 +6,8 @@ public class VehicleTypeDto {
     private String id;
     private String typeName;
     
+    public VehicleTypeDto() {}
+    
     public VehicleTypeDto(String typeName) {
         this.typeName = typeName;
     }

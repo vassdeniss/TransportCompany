@@ -22,6 +22,8 @@ public class VehicleDto {
         this.companyId = companyId;
         this.vehicleTypeId = vehicleTypeId;
     }
+
+    public VehicleDto() {}
     
     public VehicleDto(Vehicle vehicle) {
         this.id = vehicle.getId();

@@ -21,6 +21,8 @@ public class EmployeeDto {
     private String employeeClassificationId;
     private EmployeeClassification employeeClassification;
 
+    public EmployeeDto() {}
+    
     public EmployeeDto(String firstName, String lastName, String email, String phone, double salary, 
                        String companyId, String employeeClassificationId) {
         this.firstName = firstName;

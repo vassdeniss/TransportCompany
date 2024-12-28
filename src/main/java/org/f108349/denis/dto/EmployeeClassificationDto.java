@@ -6,6 +6,8 @@ public class EmployeeClassificationDto {
     private String id;
     private String classificationName;
     
+    public EmployeeClassificationDto() {}
+    
     public EmployeeClassificationDto(String classificationName) {
         this.classificationName = classificationName;
     }
