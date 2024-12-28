@@ -2,6 +2,9 @@ package org.f108349.denis.dao;
 
 import org.f108349.denis.configuration.SessionFactoryUtil;
 import org.f108349.denis.dto.CompanyDto;
+import org.f108349.denis.entity.Company;
+import org.f108349.denis.entity.Customer;
+import org.f108349.denis.entity.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,6 +16,7 @@ import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Properties;
 
@@ -46,6 +50,7 @@ public class CompanyDaoIntegrationTests {
     void setup() {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
+            session.createMutationQuery("DELETE FROM Order").executeUpdate();
             session.createMutationQuery("DELETE FROM Company").executeUpdate();
             tx.commit();
         }
@@ -58,6 +63,48 @@ public class CompanyDaoIntegrationTests {
         if (sessionFactory != null) {
             sessionFactory.close();
         }
+    }
+    
+    @Test
+    public void testGetAllCompanyOrders_whenOrdersExist_thenShouldRetrieveAggregatedData() {
+        // Arrange
+        try (Session session = sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+
+            Customer customer = Customer.createTestCustomer(1);
+            session.persist(customer);
+            
+            Company company1 = Company.createTestCompany(1);
+            Company company2 = Company.createTestCompany(2);
+            session.persist(company1);
+            session.persist(company2);
+            
+            Order order1 = Order.createTestOrder(1, company1, customer);
+            Order order2 = Order.createTestOrder(2, company2, customer);
+            Order order3 = Order.createTestOrder(3, company2, customer);
+            session.persist(order1);
+            session.persist(order2);
+            session.persist(order3);
+    
+            tx.commit();
+        }
+    
+        // Act
+        List<Object[]> results = this.companyDao.getAllCompanyOrders();
+    
+        // Assert
+        assertNotNull(results, "Results should not be null");
+        assertEquals(2, results.size(), "There should be two companies with orders");
+    
+        Object[] companyAData = results.stream().filter(r -> r[0].equals("Company 1")).findFirst().orElse(null);
+        assertNotNull(companyAData, "Company 1 data should be present");
+        assertEquals(1, (long)companyAData[1], "Company 1 should have 1 order");
+        assertEquals(new BigDecimal("1001.00"), companyAData[2], "Company 1's total cost should be 1001");
+    
+        Object[] companyBData = results.stream().filter(r -> r[0].equals("Company 2")).findFirst().orElse(null);
+        assertNotNull(companyBData, "Company 2 data should be present");
+        assertEquals(2, (long)companyBData[1], "Company 2 should have 2 orders");
+        assertEquals(new BigDecimal("2005.00"), companyBData[2], "Company 2's total cost should be 2005");
     }
     
     @Test

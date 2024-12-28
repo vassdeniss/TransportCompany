@@ -40,6 +40,7 @@ public class CompanyDaoTests {
     void setup() {
         try (Session session = sessionFactory.openSession()) {
             Transaction tx = session.beginTransaction();
+            session.createMutationQuery("DELETE FROM Order").executeUpdate();
             session.createMutationQuery("DELETE FROM Company").executeUpdate();
             tx.commit();
         }
