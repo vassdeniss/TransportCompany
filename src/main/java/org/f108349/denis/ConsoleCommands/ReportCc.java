@@ -11,9 +11,13 @@ public class ReportCc {
     public static void run(Scanner scanner) {
         ReportDao reportDao = new ReportDao();
         CompanyDao companyDao = new CompanyDao(SessionFactoryUtil.getSessionFactory());
+        EmployeeDao employeeDao = new EmployeeDao(SessionFactoryUtil.getSessionFactory());
+        OrderDao orderDao = new OrderDao(SessionFactoryUtil.getSessionFactory());
         MenuHandler handler = new MenuHandler(scanner);
         handler.addOption("1", "Get Companies Total Orders", () -> getCompanyInfoForOrdersMade(reportDao, companyDao));
         handler.addOption("2", "Get Employees Total Orders", () -> getEmployeeInfoForOrdersMade(reportDao, employeeDao));
+        handler.addOption("3", "Get Companies Income by Date", () -> getCompanyIncomeForDateRange(scanner, reportDao, orderDao));
+        handler.addOption("4", "Back", () -> { });
         handler.run();
     }
     
@@ -25,5 +29,13 @@ public class ReportCc {
     private static void getEmployeeInfoForOrdersMade(ReportDao reportDao, EmployeeDao employeeDao) {
         List<Object[]> reports = employeeDao.getAllEmployeeOrders();
         System.out.println(reportDao.getEmployeeInfoForOrdersMade(reports));
+    }
+    
+    private static void getCompanyIncomeForDateRange(Scanner scanner, ReportDao reportDao, OrderDao orderDao) {
+        Date startDate = ConsoleUtils.promptDate(scanner, "Enter start date: ");
+        Date endDate = ConsoleUtils.promptDate(scanner, "Enter end date: ");
+
+        List<Object[]> report = orderDao.getTotalIncomeForGivenTimePeriod(startDate, endDate);
+        System.out.println(reportDao.getCompanyIncomeForDateRange(report));
     }
 }

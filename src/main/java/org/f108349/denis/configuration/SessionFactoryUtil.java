@@ -14,7 +14,7 @@ public class SessionFactoryUtil {
         if (sessionFactory == null) {
             Configuration config = new Configuration();
             try {
-                config.addAnnotatedClass(   Company.class)
+                config.addAnnotatedClass(Company.class)
                     .addAnnotatedClass(Customer.class)
                     .addAnnotatedClass(EmployeeClassification.class)
                     .addAnnotatedClass(Employee.class)

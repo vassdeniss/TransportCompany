@@ -106,6 +106,77 @@ public class OrderDaoIntegrationTests {
     }
 
     @Test
+    public void testGetTotalIncomeForGivenTimePeriod_whenOrdersInRange_thenReturnsAggregatedIncome() {
+        // Arrange
+        LocalDate startDate = LocalDate.of(2023, 1, 1);
+        LocalDate endDate = LocalDate.of(2023, 12, 31);
+        Date sqlStartDate = Date.valueOf(startDate);
+        Date sqlEndDate = Date.valueOf(endDate);
+
+        OrderDto order1 = new OrderDto(
+            "item1",
+            Date.valueOf(LocalDate.of(2023, 6, 15)), // Within range
+            null,
+            "destination1",
+            new BigDecimal("1000.00"),
+            new BigDecimal("10.00"),
+            this.orderDto.getCustomerId(),
+            this.orderDto.getEmployeeId(),
+            this.orderDto.getCompanyId(),
+            this.orderDto.getVehicleId(),
+            Status.DELIVERED
+        );
+        this.orderDao.saveOrder(order1);
+
+        OrderDto order2 = new OrderDto(
+            "item2",
+            Date.valueOf(LocalDate.of(2023, 7, 15)), // Within range
+            null,
+            "destination2",
+            new BigDecimal("2000.00"),
+            new BigDecimal("20.00"),
+            this.orderDto.getCustomerId(),
+            this.orderDto.getEmployeeId(),
+            this.orderDto.getCompanyId(),
+            this.orderDto.getVehicleId(),
+            Status.DELIVERED
+        );
+        this.orderDao.saveOrder(order2);
+
+        OrderDto order3 = new OrderDto(
+            "item3",
+            Date.valueOf(LocalDate.of(2022, 12, 31)), // Outside range
+            null,
+            "destination3",
+            new BigDecimal("500.00"),
+            new BigDecimal("5.00"),
+            this.orderDto.getCustomerId(),
+            this.orderDto.getEmployeeId(),
+            this.orderDto.getCompanyId(),
+            this.orderDto.getVehicleId(),
+            Status.DELIVERED
+        );
+        this.orderDao.saveOrder(order3);
+
+        // Act
+        List<Object[]> result = this.orderDao.getTotalIncomeForGivenTimePeriod(sqlStartDate, sqlEndDate);
+
+        // Assert
+        assertEquals(1, result.size(), "Should return one aggregated result per company.");
+
+        Object[] aggregatedResult = result.getFirst();
+        String companyName = (String) aggregatedResult[0];
+        BigDecimal totalIncome = (BigDecimal) aggregatedResult[1];
+        Date returnedStartDate = (Date) aggregatedResult[2];
+        Date returnedEndDate = (Date) aggregatedResult[3];
+
+        assertEquals("Test", companyName, "Company name should match.");
+        assertEquals(new BigDecimal("3000.00"), totalIncome, "Total income should match aggregated sum of orders.");
+        assertEquals(sqlStartDate, returnedStartDate, "Start date should match.");
+        assertEquals(sqlEndDate, returnedEndDate, "End date should match.");
+    }
+    
+    @Test
     public void testOrderDao_whenOrderSaved_thenShouldBeAbleToRetrieveIt() {
         // Arrange
 

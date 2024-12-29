@@ -44,8 +44,8 @@ public class EmployeeDto {
         this.isDeleted = employee.isDeleted();
         this.companyId = employee.getCompany() != null ? employee.getCompany().getId() : null;
         this.employeeClassificationId = employee.getEmployeeClassification() != null ? employee.getEmployeeClassification().getId() : null;
-        this.company = new CompanyDto(employee.getCompany());
-        this.employeeClassification = new EmployeeClassificationDto(employee.getEmployeeClassification());
+        this.company = employee.getCompany() != null ? new CompanyDto(employee.getCompany()) : null;
+        this.employeeClassification = employee.getEmployeeClassification() != null ? new EmployeeClassificationDto(employee.getEmployeeClassification()) : null;
     }
 
     public String getId() {

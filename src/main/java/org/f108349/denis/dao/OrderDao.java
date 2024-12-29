@@ -1,15 +1,14 @@
 package org.f108349.denis.dao;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.JoinType;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
 import org.f108349.denis.dto.OrderDto;
 import org.f108349.denis.entity.*;
+import org.f108349.denis.entity.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.sql.Date;
 import java.util.List;
 
 public class OrderDao extends BaseDao<OrderDto, Order> {
@@ -121,6 +120,38 @@ public class OrderDao extends BaseDao<OrderDto, Order> {
         }
         
         return orders;
+    }
+    
+    public List<Object[]> getTotalIncomeForGivenTimePeriod(Date startDate, Date endDate) {
+        List<Object[]> list;
+        try (Session session = this.sessionFactory.openSession()) {
+            Transaction tx = session.beginTransaction();
+            
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
+            Root<Order> root = cq.from(Order.class);
+            
+            Join<Order, Company> join = root.join("company");
+            
+            cq.multiselect(
+                join.get("name"),
+                cb.sum(root.get("totalCost")),
+                cb.literal(startDate),
+                cb.literal(endDate));
+                    
+            Predicate dateRangePredicate = cb.between(
+                root.get("orderDate"),
+                cb.literal(startDate),
+                cb.literal(endDate)
+            );
+            
+            cq.where(dateRangePredicate).groupBy(join.get("name"));
+            
+            list = session.createQuery(cq).getResultList();
+            tx.commit();
+        }
+        
+        return list;
     }
     
     public void updateOrder(OrderDto orderDto) {

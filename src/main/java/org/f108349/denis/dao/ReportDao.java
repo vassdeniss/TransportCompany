@@ -35,4 +35,21 @@ public class ReportDao {
         
         return info.toString();
     }
+    
+    public String getCompanyIncomeForDateRange(List<Object[]> companyInfo) {
+        StringBuilder info = new StringBuilder();
+        for (Object[] objects : companyInfo) {
+            info.append("Company ")
+                    .append(objects[0])
+                    .append(" had income of ")
+                    .append(objects[1])
+                    .append(" between ")
+                    .append(objects[2])
+                    .append(" and ")
+                    .append(objects[3])
+                    .append(".\n");
+        }
+        
+        return info.toString();
+    }
 }

@@ -35,7 +35,6 @@ public class SessionFactoryUtil {
             e.printStackTrace();
             throw new RuntimeException("There was an issue building the Test SessionFactory.");
         }
-        
     }
 
     public static void shutdown() {

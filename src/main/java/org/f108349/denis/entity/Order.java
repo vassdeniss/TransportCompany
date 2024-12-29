@@ -102,7 +102,7 @@ public class Order {
     }
     
     public Date getOrderDate() {
-        return orderDate;
+        return this.orderDate;
     }
 
     public void setOrderDate(Date orderDate) {
@@ -110,7 +110,7 @@ public class Order {
     }
 
     public Date getShipmentDate() {
-        return shipmentDate;
+        return this.shipmentDate;
     }
 
     public void setShipmentDate(Date shipmentDate) {
@@ -118,7 +118,7 @@ public class Order {
     }
 
     public String getDestination() {
-        return destination;
+        return this.destination;
     }
 
     public void setDestination(String destination) {
@@ -126,7 +126,7 @@ public class Order {
     }
 
     public BigDecimal getTotalCost() {
-        return totalCost;
+        return this.totalCost;
     }
 
     public void setTotalCost(BigDecimal totalCost) {
@@ -134,7 +134,7 @@ public class Order {
     }
 
     public BigDecimal getTotalWeight() {
-        return totalWeight;
+        return this.totalWeight;
     }
 
     public void setTotalWeight(BigDecimal totalWeight) {
@@ -142,7 +142,7 @@ public class Order {
     }
 
     public boolean isDeleted() {
-        return isDeleted;
+        return this.isDeleted;
     }
 
     public void setDeleted(boolean deleted) {
@@ -150,7 +150,7 @@ public class Order {
     }
 
     public Status getStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(Status status) {
@@ -158,7 +158,7 @@ public class Order {
     }
 
     public Customer getCustomer() {
-        return customer;
+        return this.customer;
     }
 
     public void setCustomer(Customer customer) {
@@ -166,7 +166,7 @@ public class Order {
     }
 
     public Employee getEmployee() {
-        return employee;
+        return this.employee;
     }
 
     public void setEmployee(Employee employee) {
@@ -174,7 +174,7 @@ public class Order {
     }
 
     public Company getCompany() {
-        return company;
+        return this.company;
     }
 
     public void setCompany(Company company) {

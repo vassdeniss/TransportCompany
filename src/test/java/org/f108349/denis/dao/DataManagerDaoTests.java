@@ -30,7 +30,7 @@ public class DataManagerDaoTests {
         Properties hibernateProps = new Properties();
         hibernateProps.setProperty("hibernate.connection.url", "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1");
         hibernateProps.setProperty("hibernate.connection.username", "sa");
-        hibernateProps.setProperty("hibernate.connection.password", "");
+        hibernateProps.setProperty("hibernate.connection.password", " ");
         hibernateProps.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
         hibernateProps.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         hibernateProps.setProperty("hibernate.hbm2ddl.auto", "create-drop");
